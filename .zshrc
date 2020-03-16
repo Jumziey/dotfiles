@@ -78,6 +78,32 @@ lowercase() {
 	echo "${1}" | tr '[:upper:]' '[:lower:]'
 }
 
+vartype() {
+    local var=$( declare -p $1 )
+    local reg='^declare -n [^=]+=\"([^\"]+)\"$'
+    while [[ $var =~ $reg ]]; do
+            var=$( declare -p ${BASH_REMATCH[1]} )
+    done
+
+    case "${var#declare -}" in
+    a*)
+            echo "ARRAY"
+            ;;
+    A*)
+            echo "HASH"
+            ;;
+    i*)
+            echo "INT"
+            ;;
+    x*)
+            echo "EXPORT"
+            ;;
+    *)
+            echo "OTHER"
+            ;;
+    esac
+}
+
 alias xclip='xclip -selection clipboard'
 alias xcl='tr -d [:space:] | xclip -selection clipboard'
 
@@ -107,3 +133,5 @@ export EDITOR="nvim"
 export PATH=$PATH:/opt/canboat/bin
 
 source /home/jumzi/.config/broot/launcher/bash/br
+
+
