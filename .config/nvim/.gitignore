@@ -1,0 +1,5 @@
+pluginInstalls/.cache
+pluginInstalls/cache_nvim
+pluginInstalls/repos/
+pluginInstalls/state_nvim.vim
+

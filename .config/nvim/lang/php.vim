@@ -1,0 +1,3 @@
+"Autoformatting
+autocmd BufWritePre * Neoformat
+
