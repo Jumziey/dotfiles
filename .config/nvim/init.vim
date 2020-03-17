@@ -37,6 +37,7 @@ au BufNewFile,BufRead *.slide source ~/.config/nvim/lang/slide.vim
 au BufNewFile,BufRead *.hs source ~/.config/nvim/lang/hs.vim
 au BufNewFile,BufRead *.proto source ~/.config/nvim/lang/proto.vim
 au BufNewFile,BufRead *.bazel source ~/.config/nvim/lang/bazel.vim
+au BufNewFile,BufRead *.sh source ~/.config/nvim/lang/sh.vim
 
 "Load local init.vim
 set exrc
