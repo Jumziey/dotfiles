@@ -64,6 +64,8 @@ if dein#load_state(configPath . 'pluginInstalls/')
 	"protobuf linter
 	call dein#add('dense-analysis/ale')
 	call dein#add('bufbuild/vim-buf')
+	"bats highlightning (bash test framework)
+	call dein#add('aliou/bats.vim')
   call dein#end()
   call dein#save_state()
 endif
