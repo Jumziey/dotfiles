@@ -5,3 +5,8 @@ i3
 bash-core
 shfmt
 clang
+wget
+alacritty-git
+npm
+all-repository-fonts
+ctags
