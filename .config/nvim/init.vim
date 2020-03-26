@@ -36,7 +36,13 @@ au BufNewFile,BufRead *.pro source ~/.config/nvim/lang/pro.vim
 au BufNewFile,BufRead *.slide source ~/.config/nvim/lang/slide.vim
 au BufNewFile,BufRead *.hs source ~/.config/nvim/lang/hs.vim
 au BufNewFile,BufRead *.proto source ~/.config/nvim/lang/proto.vim
+"Bazel files
 au BufNewFile,BufRead *.bazel source ~/.config/nvim/lang/bazel.vim
+au BufNewFile,BufRead *.bzl source ~/.config/nvim/lang/bazel.vim
+au BufNewFile,BufRead WORKSPACE source ~/.config/nvim/lang/bazel.vim
+au BufNewFile,BufRead BUILD source ~/.config/nvim/lang/bazel.vim
+au BufNewFile,BufRead *.BUILD source ~/.config/nvim/lang/bazel.vim
+"Bazel files
 au BufNewFile,BufRead *.sh source ~/.config/nvim/lang/sh.vim
 
 "Load local init.vim
