@@ -1,5 +1,6 @@
 "Faith related commands mostly
 set autowrite
+let g:go_statusline_duration = 1
 let g:go_highlight_types = 1
 let g:go_fmt_command = "goimports"
 map <F8> :GoBuild<CR>
@@ -16,6 +17,11 @@ noremap <C-c> :GoDefPop<CR>
 
 noremap <c-t> <Nop>
 noremap <c-t> <C-W>j
+
+set completeopt=noselect
+call deoplete#custom#option('omni_patterns', {
+\ 'go': '[^. *\t]\.\w*',
+\})
 
 
 "Seem to have some issue with guru
