@@ -124,6 +124,7 @@ alias sudo='sudo -E'
 
 #ruby/gem
 export PATH=$PATH:/home/jumzi/.gem/ruby/2.6.0/bin
+export PATH=$PATH:/home/jumzi/.gem/ruby/2.7.0/bin
 
 #EDITOR
 export EDITOR="nvim"
@@ -132,6 +133,5 @@ export EDITOR="nvim"
 #Canboat
 export PATH=$PATH:/opt/canboat/bin
 
+#broot
 source /home/jumzi/.config/broot/launcher/bash/br
-
-
