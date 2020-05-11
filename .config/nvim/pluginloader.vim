@@ -62,7 +62,7 @@ if dein#load_state(configPath . 'pluginInstalls/')
 	"GDscript completion and highlighting
   call dein#add('calviken/vim-gdscript3')
 	"protobuf linter
-	call dein#add('dense-analysis/ale')
+	"call dein#add('dense-analysis/ale')
 	call dein#add('bufbuild/vim-buf')
 	"bats highlightning (bash test framework)
 	call dein#add('aliou/bats.vim')
