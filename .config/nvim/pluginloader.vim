@@ -72,7 +72,7 @@ endif
 "use command
 "call dein#install()
 
-command DeinUninstallPlugin :call dein#recache_runtimepath() | :call map(dein#check_clean(), "delete(v:val, 'rf')")
+command DeinDeleteRemovedPlugins :call dein#recache_runtimepath() | :call map(dein#check_clean(), "delete(v:val, 'rf')")
 
 filetype plugin indent on
 syntax enable
