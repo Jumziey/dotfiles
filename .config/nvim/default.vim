@@ -36,8 +36,7 @@ autocmd Filetype php setlocal ts=4 sw=4 expandtab
 autocmd FileType conf setlocal ts=2 sts=2 sw=2 ai
 
 "Spelling
-autocmd Filetype tex set spelllang=en_gb spell
-autocmd Filetype markdown set spelllang=en_gb spell
+set spelllang=en,sv
 
 "colorscheme
 set t_Co=256
