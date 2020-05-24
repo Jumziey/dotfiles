@@ -11,6 +11,6 @@ augroup END
 "Qt syntax
 autocmd BufEnter,BufWritePost * source ~/.config/nvim/syntax/qt.vim
 
+let g:neomake_cpp_enabled_makers = ['']
+call neomake#configure#automake('')
 
-"disable neomake for cpp
-autocmd BufReadPre * NeomakeDisable
