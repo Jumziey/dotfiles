@@ -25,9 +25,9 @@ noremap <C-T> <C-W>j
 noremap <C-N> <C-W>k
 noremap <C-S> <C-W>l
 
-"tags following
+"link following
 noremap <c-g> <c-]>
-noremap <c-c> :tselect<CR>
+noremap <c-c> <c-o>
 
 
 "Tabbing
@@ -56,4 +56,3 @@ set clipboard+=unnamedplus
 for f in split(glob(configPath . 'default/*.vim'), '\n')
     exe 'source' f
 endfor
-
