@@ -68,6 +68,9 @@ if dein#load_state(configPath . 'pluginInstalls/')
 	call dein#add('aliou/bats.vim')
 	"journaling and link connected wiki"
 	call dein#add('vimwiki/vimwiki')
+	"Better spelling checking
+	"takes care of camelcase etc.
+	call dein#add('kamykn/spelunker.vim')
   call dein#end()
   call dein#save_state()
 endif
