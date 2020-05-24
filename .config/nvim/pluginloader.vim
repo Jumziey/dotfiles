@@ -66,6 +66,8 @@ if dein#load_state(configPath . 'pluginInstalls/')
 	call dein#add('bufbuild/vim-buf')
 	"bats highlightning (bash test framework)
 	call dein#add('aliou/bats.vim')
+	"journaling and link connected wiki"
+	call dein#add('vimwiki/vimwiki')
   call dein#end()
   call dein#save_state()
 endif
@@ -74,6 +76,5 @@ endif
 
 command DeinDeleteRemovedPlugins :call dein#recache_runtimepath() | :call map(dein#check_clean(), "delete(v:val, 'rf')")
 
-filetype plugin indent on
-syntax enable
-
+filetype plugin on 
+syntax on
