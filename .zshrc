@@ -114,6 +114,10 @@ export TERMINAL=alacritty
 export BROWSER=firefox
 export PATH=$PATH:~/.local/bin
 
+#Firefox
+#For touch screen events
+export MOZ_USE_XINPUT2=1
+
 # golang
 export GOPATH=$HOME/.go
 export GOBIN=$GOPATH/bin
