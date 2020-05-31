@@ -1,0 +1,22 @@
+#!/bin/bash
+
+SCRIPT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+# shellcheck source=/include/brightness/unary.sh
+source "$SCRIPT_ROOT/include/brightness/unary.sh"
+
+CURRENT=$(brightnessctl -m | awk -F "," '{print $4;}' | sed 's/.$//g')
+ACTION="$1"
+
+case $ACTION in
+inc)
+  ((NEW = $(increment "$CURRENT")))
+  brightnessctl s "$NEW$(percentSign "$NEW")"
+  ;;
+dec)
+  ((NEW = $(decrement "$CURRENT")))
+  brightnessctl s "$NEW$(percentSign "$NEW")"
+  ;;
+*)
+  echo "current value: ${BRIGHTNESS_CURRENT}"
+  ;;
+esac

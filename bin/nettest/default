@@ -1,0 +1,16 @@
+#!/bin/bash
+echo ""
+echo "#############################"
+echo "Remember to sync the clocks!"
+echo ""
+echo "ssh pi@<pi adress>"
+echo "ntpdate <laptop ip>"
+echo "#############################"
+echo ""
+flent tcp_download -p totals --absolute-time -H $1 -o tcp_download_plot.png &&
+flent tcp_1up_noping -p totals --absolute-time -H $1 -o tcp_1up_noping.png &&
+flent tcp_4up -p totals -H --absolute-time $1 -o tcp_4up.png &&
+flent tcp_4down -p totals -H --absolute-time $1 -o tcp_4down.png &&
+flent rrul -p all_scaled -H --absolute-time $1 -o rrul.png &&
+irtt client $1 > "latency_info.txt" &&
+cat latency_info.txt
