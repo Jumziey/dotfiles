@@ -148,7 +148,7 @@ when "add"
     end
 else
     puts "Usage: "
-    puts "gen_model create <model_object>"
-    puts "gen_model add <model_object> <type:name1[:r|rw]> ..."
+    puts "qt_gen create <model_object>"
+    puts "qt_gen add <model_object> <type:name1[:r|rw]> ..."
     puts "(property is by default declared read/write)"    
 end
