@@ -102,7 +102,7 @@ def add_property(klass, type, name, readonly)
         elsif ! readonly && line =~ /public:/
             lines.insert(i, "\tQ_PROPERTY(#{type} #{reader} READ #{reader} WRITE set#{writer} NOTIFY #{reader}Changed)")
         elsif line =~ /\[end of signals\]/
-            lines.insert(i, "\tvoid #{reader}Changed();")
+            lines.insert(i, "\tvoid #{reader}Changed(#{type});")
         elsif line =~ /\[end of members\]/
             lines.insert(i, "\t#{type} m_#{reader};")
         else
@@ -125,7 +125,7 @@ EOF
 void #{class_name}::set#{writer}(#{type} #{reader[0]}) {
     if (m_#{reader} != #{reader[0]}) {
         m_#{reader} = #{reader[0]};
-        emit #{reader}Changed();
+        emit #{reader}Changed(m_#{reader});
     }
 }
 
