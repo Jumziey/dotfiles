@@ -1,0 +1,154 @@
+#!/usr/bin/env ruby
+#
+# generate property based QObject with common getter/setter
+# Just implement for my naming conventions :
+# Ex: for a new class MyGeneratedObject
+# => header file my_generated_object.h
+# => source file my_generated_object.cpp
+# A property double value
+# => member variable: double m_value
+# => getter: double value() const;
+# => setter: void setValue(double);
+# => notifier: void valueChanged();
+# A long property QString m_long_snake_variable
+# => member variable: double m_longSnakeVariable
+# => getter: double longSnakeVariable() const;
+# => setter: void setLongSnakeVariable(double);
+# => notifier: void valueLongSnakeVariable();
+# NEED IMPROVEMENTS
+
+class String
+    def snakify
+        sub(/^([A-Z])/) {|m| m.downcase}
+        .gsub(/([A-Z])/) {|m| "_#{m.downcase}"}
+    end
+
+    def camelize
+        gsub(/_([a-zA-Z])/) { |m| "#{m.upcase}" }.gsub(/_/, "")
+    end
+
+    def first_up
+        self.sub(/^(.)/) { $1.capitalize }
+    end
+end
+
+def create_class_skeleton(name)
+    base_name = name.downcase
+    source_file = "#{base_name}.cpp"
+    header_file = "#{base_name}.h"
+    class_name = name.camelize.first_up
+
+    header = File.open(header_file, 'w')
+    s=<<EOF
+#ifndef #{base_name.upcase}_H
+#define #{base_name.upcase}_H
+
+#include <QObject>
+
+class #{class_name}: public QObject {
+Q_OBJECT
+public:
+    explicit #{class_name}(QObject *parent=0);
+
+    //[getter]
+    //[end of getter]
+
+    //[setter]
+    //[end of setter]
+
+    signals:
+    //[end of signals]
+private:
+    //[members]
+    //[end of members]
+};
+#endif
+EOF
+  header.write s
+  header.close
+
+  s=<<EOF
+#include "#{header_file}"
+
+#{class_name}::#{class_name}(QObject *parent) :
+  QObject(parent) {
+}
+
+EOF
+  source = File.open(source_file, 'w')
+  source.write s
+  source.close
+end
+
+def add_property(klass, type, name, readonly)
+    base_name = klass.downcase
+    class_name = klass.camelize.first_up
+    source_file = "#{base_name}.cpp"
+    header_file = "#{base_name}.h"
+    reader = name.camelize
+    writer = name.camelize.first_up
+
+    lines = File.open(header_file).readlines
+    i = 0
+    while i < lines.size do
+        line = lines[i]
+
+        if line =~ /\[end of getter\]/
+            lines.insert(i, "\t#{type} #{reader}() const;")
+        elsif line =~ /\[end of setter\]/
+            lines.insert(i, "\tvoid set#{writer}(#{type});")
+        elsif readonly && line =~ /public:/
+            lines.insert(i, "\tQ_PROPERTY(#{type} #{reader} READ #{reader} NOTIFY #{reader}Changed)")
+        elsif ! readonly && line =~ /public:/
+            lines.insert(i, "\tQ_PROPERTY(#{type} #{reader} READ #{reader} WRITE set#{writer} NOTIFY #{reader}Changed)")
+        elsif line =~ /\[end of signals\]/
+            lines.insert(i, "\tvoid #{reader}Changed();")
+        elsif line =~ /\[end of members\]/
+            lines.insert(i, "\t#{type} m_#{reader};")
+        else
+            i = i - 1
+        end
+        i = i + 2
+    end
+    f = File.open(header_file, "w")
+    f.puts lines
+    f.close
+
+    f = File.open(source_file, "a+")
+    f.puts <<EOF
+#{type} #{class_name}::#{reader}() const {
+    return m_#{reader};
+}
+
+EOF
+    f.puts <<EOF
+void #{class_name}::set#{writer}(#{type} #{reader[0]}) {
+    if (m_#{reader} != #{reader[0]}) {
+        m_#{reader} = #{reader[0]};
+        emit #{reader}Changed();
+    }
+}
+
+EOF
+    f.close
+end
+
+case ARGV[0]
+when "create"
+    create_class_skeleton ARGV[1]
+when "add"
+    ARGV[2..-1].each do |tok|
+        params = tok.split(':')
+        if params.size == 2 
+            add_property ARGV[1], params[0], params[1], false
+        elsif params.size == 3 and ["r", "rw"].include? params[2]
+            ro = params[2] == "r"
+            add_property ARGV[1], params[0], params[1], ro
+        end
+    end
+else
+    puts "Usage: "
+    puts "gen_model create <model_object>"
+    puts "gen_model add <model_object> <type:name1[:r|rw]> ..."
+    puts "(property is by default declared read/write)"    
+end
