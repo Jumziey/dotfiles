@@ -40,8 +40,6 @@ if dein#load_state(configPath . 'pluginInstalls/')
 	call dein#add('Shougo/deoplete.nvim')
 	"Currently used theme
 	call dein#add('kristijanhusak/vim-hybrid-material')
-	"Integration with vifm
-	call dein#add('vifm/neovim-vifm')
 	"Formats code on save
 	call dein#add('sbdchd/neoformat')
 	"Alternate between header and source file
