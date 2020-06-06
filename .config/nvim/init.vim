@@ -1,25 +1,8 @@
-"
-" CONFIG
-"
-
-"pdf reader binary
-let pdfReader = 'zathura'
-"Path to python3 binary
-let python3Binary = '/usr/bin/python3'
-"Path to neovim config dir
-let configPath = "~/.config/nvim/"
-
-
-"
-" FUNCTION
-"
-
-"Setting up some default paths
-let pluginloaderPath = configPath . "pluginloader.vim"
-let defaultPath = configPath . "default.vim"
-
-exec "source " . pluginloaderPath
-exec "source " . defaultPath
+if has('unix')
+	exec "source " . fnamemodify($MYVIMRC, ':h') . '/' . 'linux.vim'
+elseif has('win32')
+	exec "source " . fnamemodify($MYVIMRC, ':h') . '/' . 'win.vim'
+endif
 
 exec "source " . configPath . "pluginloader.vim"
 exec "source " . configPath . "default.vim"
