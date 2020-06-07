@@ -1,10 +1,13 @@
 
 let configPath = fnamemodify($MYVIMRC, ':h') 
+let dirsep = ""
 if has('unix')
-	let configPath = configPath . '/'
+	let dirsep = '/'
+	let configPath = configPath . dirsep
 	exec "source " . configPath . 'linux.vim'
 elseif has('win32')
-	let configPath = configPath . '\'
+	let dirsep = '\'
+	let configPath = configPath . dirsep
 	exec "source " . configPath . 'win.vim'
 endif
 
