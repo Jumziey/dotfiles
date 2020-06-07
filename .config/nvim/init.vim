@@ -1,7 +1,11 @@
+
+let configPath = fnamemodify($MYVIMRC, ':h') 
 if has('unix')
-	exec "source " . fnamemodify($MYVIMRC, ':h') . '/' . 'linux.vim'
+	let configPath = configPath . '/'
+	exec "source " . configPath . 'linux.vim'
 elseif has('win32')
-	exec "source " . fnamemodify($MYVIMRC, ':h') . '/' . 'win.vim'
+	let configPath = configPath . '\'
+	exec "source " . configPath . 'win.vim'
 endif
 
 exec "source " . configPath . "pluginloader.vim"
