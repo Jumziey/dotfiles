@@ -7,8 +7,8 @@ endif
 " Required:
 exec "set runtimepath+=" . configPath . 'pluginInstalls/repos/github.com/Shougo/dein.vim' 
 " Required:
-if dein#load_state(configPath . 'pluginInstalls/')
-	call dein#begin(configPath . 'pluginInstalls/')
+if dein#load_state(configPath . 'pluginInstalls')
+	call dein#begin(configPath . 'pluginInstalls')
 	call dein#add(configPath . 'pluginInstalls//repos/github.com/Shougo/dein.vim')
 
 	"Tag helper
