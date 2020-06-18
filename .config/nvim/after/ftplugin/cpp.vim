@@ -1,6 +1,7 @@
+
 set ts=4 sw=4 ai
 set expandtab
-map <F12> :A<CR>
+map <buffer> <F12> :A<CR>
 
 " Autoformatting
 augroup fmt
@@ -9,7 +10,7 @@ augroup fmt
 augroup END
 
 "Qt syntax
-autocmd BufEnter,BufWritePost * source ~/.config/nvim/syntax/qt.vim
+autocmd BufEnter,BufWritePost * runtime expand('syntax/qt.vim')
 
 let g:neomake_cpp_enabled_makers = ['']
 call neomake#configure#automake('')
