@@ -70,6 +70,8 @@ if dein#load_state(configPath . 'pluginInstalls')
 	"Better spelling checking
 	"takes care of camelcase etc.
 	call dein#add('kamykn/spelunker.vim')
+	"OpenSCAD highlight
+	call dein#add('sirtaj/vim-openscad')
 	call dein#end()
 	call dein#save_state()
 endif
