@@ -19,7 +19,6 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('ctrlpvim/ctrlp.vim')
 	"Status bar
 	call dein#add('vim-airline/vim-airline')
-	call dein#add('vim-airline/vim-airline-themes')
 	"Jump in files, azm
 	call dein#add('easymotion/vim-easymotion')
 	"Shows changes in the gutter
