@@ -3,6 +3,9 @@
 "
 " NEOVIM DEFAULT SETTINGS
 "
+"
+
+set hid
 
 "Load local init.vim
 set exrc
