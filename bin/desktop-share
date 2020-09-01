@@ -1,0 +1,36 @@
+#!/bin/bash
+
+usage() {
+  echo ""
+  echo "Usage: $0 [-p <port>] <protocol> <xid>"
+  echo -e "\t-p port number to present desktop on"
+  echo -e "\tprotocol protocol to speak (udp,srt)"
+  echo -e "\txid of application you want to share (use wmctrl -l)"
+  exit 1
+}
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+  usage
+fi
+
+PROTOCOL=$1
+XID=$2
+
+while getopts "p:" opt; do
+  case "$opt" in
+  p) PORT="$OPTARG" ;;
+  ?) usage ;;
+  esac
+done
+
+if [ -z "$PORT" ]; then
+  PORT="5000"
+fi
+
+if [ "$PROTOCOL" = "udp" ]; then
+  time gst-launch-1.0 -v ximagesrc use-damage=false xid="$XID" ! videoconvert ! videoscale ! video/x-raw,format=I420,width=1280,height=720,framerate=25/1 ! jpegenc ! rtpjpegpay ! udpsink host=127.0.0.1 port=5000
+fi
+
+if [ "$PROTOCOL" = "srt" ]; then
+  time gst-launch-1.0 ximagesrc show-pointer=true use-damage=false xid="$XID" ! videoconvert ! x264enc bitrate=32000 tune=zerolatency speed-preset=veryfast byte-stream=true threads=1 key-int-max=15 intra-refresh=true ! video/x-h264, profile=baseline, framerate=30/1 ! mpegtsmux ! srtsink uri=srt://:"$PORT" mode=listener latency=100
+fi

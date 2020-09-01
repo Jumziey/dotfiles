@@ -1,0 +1,39 @@
+#!/bin/bash
+
+usage() {
+  echo ""
+  echo "Usage: $0 [-p <port>] <protocol>"
+  echo -e "\t-i ip number to connect on"
+  echo -e "\t-p port number to connect on"
+  echo -e "\tprotocol protocol to speak (udp,srt)"
+  exit 1
+}
+
+if [ -z "$1" ]; then
+  usage
+fi
+
+PROTOCOL=$1
+
+while getopts "p:i:" opt; do
+  case "$opt" in
+  p) PORT="$OPTARG" ;;
+  i) IP="$OPTARG" ;;
+  ?) usage ;;
+  esac
+done
+
+if [ -z "$PORT" ]; then
+  PORT="5000"
+fi
+if [ -z "$IP" ]; then
+  IP="127.0.0.1"
+fi
+
+if [ "$PROTOCOL" = "udp" ]; then
+  gst-launch-1.0 udpsrc port="$PORT" ! application/x-rtp,encoding-name=JPEG,payload=26 ! rtpjpegdepay ! jpegdec ! autovideosink
+fi
+
+if [ "$PROTOCOL" = "srt" ]; then
+  gst-launch-1.0 srtsrc uri=srt://"$IP":"$PORT" latency=100 ! tsdemux ! h264parse ! video/x-h264 ! avdec_h264 ! autovideosink sync=false
+fi
