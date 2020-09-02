@@ -31,7 +31,7 @@ if [ -z "$IP" ]; then
 fi
 
 if [ "$PROTOCOL" = "udp" ]; then
-  gst-launch-1.0 udpsrc port="$PORT" ! application/x-rtp,encoding-name=JPEG,payload=26 ! rtpjpegdepay ! jpegdec ! autovideosink
+  gst-launch-1.0 udpsrc address="$IP" port="$PORT" ! application/x-rtp,encoding-name=JPEG,payload=26 ! rtpjpegdepay ! jpegdec ! autovideosink
 fi
 
 if [ "$PROTOCOL" = "srt" ]; then
