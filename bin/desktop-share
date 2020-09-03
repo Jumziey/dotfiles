@@ -27,9 +27,9 @@ if [ -z "$PORT" ]; then
 fi
 
 if [ "$PROTOCOL" = "udp" ]; then
-  time gst-launch-1.0 -v ximagesrc endx=1920 endy=1080 use-damage=false ! videoconvert ! videoscale method=0 ! video/x-raw,format=I420,framerate=25/1 ! jpegenc ! rtpjpegpay ! udpsink host=127.0.0.1 port=5000
+  time gst-launch-1.0 -v ximagesrc endx=1919 endy=1079 use-damage=false ! videoconvert ! videoscale method=0 ! video/x-raw,format=I420,framerate=25/1 ! jpegenc ! rtpjpegpay ! udpsink host=127.0.0.1 port=5000
 fi
 
 if [ "$PROTOCOL" = "srt" ]; then
-  time gst-launch-1.0 -v ximagesrc startx=1 endx=1920 starty=1 endy=1080 show-pointer=true use-damage=false ! videoconvert ! x264enc bitrate=32000 tune=zerolatency speed-preset=veryfast byte-stream=true threads=1 key-int-max=15 intra-refresh=true ! video/x-h264, profile=baseline, framerate=30/1 ! mpegtsmux ! srtsink uri=srt://:"$PORT" mode=listener latency=100
+  time gst-launch-1.0 -v ximagesrc endx=1919 endy=1079 show-pointer=true use-damage=false ! videoconvert ! x264enc bitrate=32000 tune=zerolatency speed-preset=veryfast byte-stream=true threads=1 key-int-max=15 intra-refresh=true ! video/x-h264, profile=baseline, framerate=30/1 ! mpegtsmux ! srtsink uri=srt://:"$PORT" mode=listener latency=100
 fi
