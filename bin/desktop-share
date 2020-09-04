@@ -1,35 +1,53 @@
 #!/bin/bash
 
+options=$(getopt \
+  --options "" \
+  --longoptions help,protocol:,ip:,port: \
+  -- "$@")
+eval set --"$options"
+
 usage() {
   echo ""
-  echo "Usage: $0 [-p <port>] <protocol> <xid>"
-  echo -e "\t-p port number to present desktop on"
-  echo -e "\tprotocol protocol to speak (udp,srt)"
-  echo -e "\txid of application you want to share (use wmctrl -l)"
+  echo "Usage: $0 [--ip=<ip>] [--port=<port(5000)>] [--protocol=<protocol(srt)>]"
+  echo -e "\t--ip number to present on"
+  echo -e "\t--port port number to present desktop on"
+  echo -e "\t--protocol protocol to speak (udp,srt)"
   exit 1
 }
 
-if [ -z "$1" ]; then
-  usage
-fi
-
-PROTOCOL=$1
-
-while getopts "p:" opt; do
-  case "$opt" in
-  p) PORT="$OPTARG" ;;
-  ?) usage ;;
+PROTOCOL="srt"
+IP=""
+PORT="5000"
+while true; do
+  case "$1" in
+  --protocol)
+    shift
+    PROTOCOL="$1"
+    ;;
+  --ip)
+    shift
+    IP="$1"
+    ;;
+  --port)
+    shift
+    PORT="$1"
+    ;;
+  --help)
+    usage
+    exit 1
+    ;;
+  --)
+    shift
+    break
+    ;;
   esac
+  shift
 done
 
-if [ -z "$PORT" ]; then
-  PORT="5000"
-fi
-
 if [ "$PROTOCOL" = "udp" ]; then
-  time gst-launch-1.0 -v ximagesrc endx=1919 endy=1079 use-damage=false ! videoconvert ! videoscale method=0 ! video/x-raw,format=I420,framerate=25/1 ! jpegenc ! rtpjpegpay ! udpsink host=127.0.0.1 port=5000
+  time gst-launch-1.0 -v ximagesrc endx=1919 endy=1079 use-damage=false ! videoconvert ! videoscale method=0 ! video/x-raw,format=I420,framerate=25/1 ! jpegenc ! rtpjpegpay ! udpsink host="$IP" port="$PORT"
 fi
 
 if [ "$PROTOCOL" = "srt" ]; then
-  time gst-launch-1.0 -v ximagesrc endx=1919 endy=1079 show-pointer=true use-damage=false ! videoconvert ! x264enc bitrate=32000 tune=zerolatency speed-preset=veryfast byte-stream=true threads=1 key-int-max=15 intra-refresh=true ! video/x-h264, profile=baseline, framerate=30/1 ! mpegtsmux ! srtsink uri=srt://:"$PORT" mode=listener latency=100
+  time gst-launch-1.0 -v ximagesrc endx=1919 endy=1079 show-pointer=true use-damage=false ! videoconvert ! x264enc bitrate=32000 tune=zerolatency speed-preset=veryfast byte-stream=true threads=1 key-int-max=15 intra-refresh=true ! video/x-h264, profile=baseline, framerate=30/1 ! mpegtsmux ! srtsink uri=srt://"$IP":"$PORT" mode=listener latency=100
 fi
