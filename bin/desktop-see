@@ -2,16 +2,16 @@
 
 options=$(getopt \
   --options "" \
-  --longoptions protocol:,ip:,port: \
+  --longoptions help,protocol:,ip:,port: \
   -- "$@")
 eval set --"$options"
 
 usage() {
   echo ""
-  echo "Usage: $0 [-p <port>] <protocol>"
-  echo -e "\t-i ip number to connect on"
-  echo -e "\t-p port number to connect on"
-  echo -e "\tprotocol protocol to speak (udp,srt)"
+  echo "Usage: $0 [--ip=<ip(127.0.0.1)>] [--port=<port(5000)>] [--protocol=<protocol(srt)>]"
+  echo -e "\t--ip number to connect on"
+  echo -e "\t--port number to connect on"
+  echo -e "\t--protocol to speak (udp,srt)"
   exit 1
 }
 
@@ -32,6 +32,11 @@ while true; do
     shift
     PORT="$1"
     ;;
+  --help)
+    usage
+    exit 1
+    ;;
+
   --)
     shift
     break
