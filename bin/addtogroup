@@ -1,0 +1,18 @@
+#!/bin/bash
+
+usage() {
+  echo ""
+  echo "Usage: $0 <group> <user>"
+  echo -e "\tgroup - the group you want to add to a user"
+  echo -e "\tuser - the user you want to be added to a group"
+  exit 1
+}
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+  usage
+fi
+
+GROUP=$1
+USER=$2
+
+sudo usermod -a -G "$GROUP" "$USER"
