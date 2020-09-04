@@ -2,22 +2,24 @@
 
 options=$(getopt \
   --options "" \
-  --longoptions help,protocol:,ip:,port: \
+  --longoptions help,latency:,protocol:,ip:,port: \
   -- "$@")
 eval set --"$options"
 
 usage() {
   echo ""
-  echo "Usage: $0 [--ip=<ip>] [--port=<port(5000)>] [--protocol=<protocol(srt)>]"
+  echo "Usage: $0 [--ip=<ip>] [--port=<port(5000)>] [--protocol=<protocol(srt)>] [--latency=<latency>]"
   echo -e "\t--ip number to present on"
   echo -e "\t--port port number to present desktop on"
   echo -e "\t--protocol protocol to speak (udp,srt)"
+  echo -e "\t--latency(ms) in which the srt protocol should run with"
   exit 1
 }
 
 PROTOCOL="srt"
 IP=""
 PORT="5000"
+LATENCY="100"
 while true; do
   case "$1" in
   --protocol)
@@ -31,6 +33,10 @@ while true; do
   --port)
     shift
     PORT="$1"
+    ;;
+  --latency)
+    shift
+    LATENCY="$1"
     ;;
   --help)
     usage
@@ -49,5 +55,5 @@ if [ "$PROTOCOL" = "udp" ]; then
 fi
 
 if [ "$PROTOCOL" = "srt" ]; then
-  time gst-launch-1.0 -v ximagesrc endx=1919 endy=1079 show-pointer=true use-damage=false ! videoconvert ! x264enc bitrate=32000 tune=zerolatency speed-preset=veryfast byte-stream=true threads=1 key-int-max=15 intra-refresh=true ! video/x-h264, profile=baseline, framerate=30/1 ! mpegtsmux ! srtsink uri=srt://"$IP":"$PORT" mode=listener latency=100
+  time gst-launch-1.0 -v ximagesrc endx=1919 endy=1079 show-pointer=true use-damage=false ! videoconvert ! x264enc bitrate=32000 tune=zerolatency speed-preset=veryfast byte-stream=true threads=1 key-int-max=15 intra-refresh=true ! video/x-h264, profile=baseline, framerate=30/1 ! mpegtsmux ! srtsink uri=srt://"$IP":"$PORT" mode=listener latency="$LATENCY"
 fi

@@ -2,22 +2,24 @@
 
 options=$(getopt \
   --options "" \
-  --longoptions help,protocol:,ip:,port: \
+  --longoptions help,latency:,protocol:,ip:,port: \
   -- "$@")
 eval set --"$options"
 
 usage() {
   echo ""
-  echo "Usage: $0 [--ip=<ip(127.0.0.1)>] [--port=<port(5000)>] [--protocol=<protocol(srt)>]"
+  echo "Usage: $0 [--ip=<ip(127.0.0.1)>] [--port=<port(5000)>] [--protocol=<protocol(srt)>] [--latency=<latency>]"
   echo -e "\t--ip number to connect on"
   echo -e "\t--port number to connect on"
   echo -e "\t--protocol to speak (udp,srt)"
+  echo -e "\t--latency(ms) in which the srt protocol should run with"
   exit 1
 }
 
 PROTOCOL="srt"
 PORT="5000"
 IP="127.0.0.1"
+LATENCY="100"
 while true; do
   case "$1" in
   --protocol)
@@ -32,6 +34,11 @@ while true; do
     shift
     PORT="$1"
     ;;
+  --latency)
+    shift
+    LATENCY="$1"
+    ;;
+
   --help)
     usage
     exit 1
@@ -50,5 +57,5 @@ if [ "$PROTOCOL" = "udp" ]; then
 fi
 
 if [ "$PROTOCOL" = "srt" ]; then
-  gst-launch-1.0 srtsrc uri=srt://"$IP":"$PORT" latency=100 ! tsdemux ! h264parse ! video/x-h264 ! avdec_h264 ! autovideosink sync=false
+  gst-launch-1.0 srtsrc uri=srt://"$IP":"$PORT" latency="$LATENCY" ! tsdemux ! h264parse ! video/x-h264 ! avdec_h264 ! autovideosink sync=false
 fi
