@@ -1,0 +1,69 @@
+#!/bin/bash
+
+#Relays rtsp network camera over srt to other clients
+
+options=$(getopt \
+  --options "" \
+  --longoptions help,latency:,cam-user:,cam-pw:,cam-ip:,ip:,port: \
+  -- "$@")
+eval set --"$options"
+
+usage() {
+  echo ""
+  echo "Usage: $0 [--ip=<ip>] [--port=<port(5000)>] [--protocol=<protocol(srt)>] [--latency=<latency>]"
+  echo -e "\t--cam-pw to camera to relay"
+  echo -e "\t--cam-user to camera to relay"
+  echo -e "\t--cam-ip to camera to relay"
+  echo -e "\t--ip number to present on"
+  echo -e "\t--port port number to present desktop on"
+  echo -e "\t--protocol protocol to speak (udp,srt)"
+  echo -e "\t--latency(ms) in which the srt protocol should run with"
+  exit 1
+}
+
+IP=""
+PORT="5000"
+LATENCY="100"
+CAMIP="192.168.0.100"
+CAMUSER="user"
+CAMPW="password"
+
+while true; do
+  case "$1" in
+  --cam-ip)
+    shift
+    CAMIP="$1"
+    ;;
+  --cam-user)
+    shift
+    CAMUSER="$1"
+    ;;
+  --cam-pw)
+    shift
+    CAMPW="$1"
+    ;;
+  --ip)
+    shift
+    IP="$1"
+    ;;
+  --port)
+    shift
+    PORT="$1"
+    ;;
+  --latency)
+    shift
+    LATENCY="$1"
+    ;;
+  --help)
+    usage
+    exit 1
+    ;;
+  --)
+    shift
+    break
+    ;;
+  esac
+  shift
+done
+
+time gst-launch-1.0 -v rtspsrc is-live=true latency=10 do-retransmission=false user-id="$CAMUSER" user-pw="$CAMPW" location="rtsp://$CAMIP/axis-media/media.amp?videocodec=h264&compression=50&fps=60&resolution=1280x720" ! rtph264depay ! mpegtsmux ! srtsink uri=srt://"$IP":"$PORT" mode=listener latency="$LATENCY"
