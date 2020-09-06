@@ -5,7 +5,7 @@
 "
 "
 
-set hid
+set hidden
 
 "Load local init.vim
 set exrc
