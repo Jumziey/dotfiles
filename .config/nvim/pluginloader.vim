@@ -34,8 +34,6 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('chrisbra/Colorizer')
 	"Latex integration
 	call dein#add('lervag/vimtex')
-	"Tab completer
-	call dein#add('Shougo/deoplete.nvim')
 	"Currently used theme
 	call dein#add('kristijanhusak/vim-hybrid-material')
 	"Formats code on save
@@ -69,6 +67,8 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('kamykn/spelunker.vim')
 	"OpenSCAD highlight
 	call dein#add('sirtaj/vim-openscad')
+	"coc intellisense context auto completion
+	call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
 	call dein#end()
 	call dein#save_state()
 endif

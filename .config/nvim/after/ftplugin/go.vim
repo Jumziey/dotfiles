@@ -18,11 +18,6 @@ noremap <C-c> :GoDefPop<CR>
 noremap <c-t> <Nop>
 noremap <c-t> <C-W>j
 
-set completeopt=noselect
-call deoplete#custom#option('omni_patterns', {
-\ 'go': '[^. *\t]\.\w*',
-\})
-
 
 "Seem to have some issue with guru
 let g:go_def_mode = 'godef'
