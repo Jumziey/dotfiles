@@ -66,4 +66,4 @@ while true; do
   shift
 done
 
-time gst-launch-1.0 -v rtspsrc is-live=true latency=10 do-retransmission=false user-id="$CAMUSER" user-pw="$CAMPW" location="rtsp://$CAMIP/axis-media/media.amp?videocodec=h264&compression=50&fps=60&resolution=1280x720" ! rtph264depay ! mpegtsmux ! srtsink uri=srt://"$IP":"$PORT" mode=listener latency="$LATENCY"
+time gst-launch-1.0 -v rtspsrc is-live=true latency="$LATENCY" do-retransmission=false user-id="$CAMUSER" user-pw="$CAMPW" location="rtsp://$CAMIP/axis-media/media.amp?videocodec=h264&compression=50&fps=60&resolution=1280x720" ! rtph264depay ! mpegtsmux ! srtsink uri=srt://"$IP":"$PORT" mode=listener latency="$LATENCY"
