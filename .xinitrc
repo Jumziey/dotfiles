@@ -5,7 +5,10 @@ blueman-applet &
 nm-applet &
 
 # Not a requirement, but useful especially for screen configs
-source $HOME/.xinitrc-local 2>/dev/null
+LOCAL="$HOME"/.xinitrc-local
+if [[ -f "$LOCAL" ]]; then
+	source $HOME/.xinitrc-local 2>/dev/null
+fi
 
 # Needs to be run after screen resolution changes
 # something thats often set in xinitrc-local
