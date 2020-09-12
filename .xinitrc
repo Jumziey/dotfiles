@@ -1,7 +1,9 @@
 twmnd &
 blueman-applet &
 xrdb -merge ~/.Xresources
-picom -b --unredir-if-possible --backend xr_glx_hybrid --vsync --use-damage --glx-no-stencil
-xrandr --output eDP-1 --mode 1920x1080
 xbindkeys
+
+#Not a requirement, but useful especially for screen configs
+source $HOME/.xinitrc-local 2>/dev/null
+
 exec i3 
