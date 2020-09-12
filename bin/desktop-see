@@ -57,5 +57,5 @@ if [ "$PROTOCOL" = "udp" ]; then
 fi
 
 if [ "$PROTOCOL" = "srt" ]; then
-  gst-launch-1.0 srtsrc uri=srt://"$IP":"$PORT" latency="$LATENCY" ! tsdemux ! h264parse ! video/x-h264 ! avdec_h264 ! autovideosink sync=false
+  gst-launch-1.0 --gst-debug-level=2 srtsrc uri=srt://"$IP":"$PORT" latency="$LATENCY" ! tsdemux ! h264parse ! video/x-h264 ! avdec_h264 ! autovideosink sync=false
 fi
