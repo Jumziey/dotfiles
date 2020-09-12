@@ -104,6 +104,10 @@ vartype() {
     esac
 }
 
+alias printrun='docker run --device /dev/ttyACM0 -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD:/root twhtanghk/docker.printrun'
+
+alias printrunACM1='docker run --device /dev/ttyACM1 -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD:/root twhtanghk/docker.printrun'
+
 alias xclip='xclip -selection clipboard'
 alias xcl='tr -d [:space:] | xclip -selection clipboard'
 
