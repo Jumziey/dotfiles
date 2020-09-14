@@ -3,8 +3,13 @@
 set ts=2 sw=2 ai
 set expandtab
 
-"Formatting
-autocmd BufWritePre * Neoformat
+augroup haskell
+  autocmd!
+	" Auto Formatting
+  autocmd BufWritePre * silent! undojoin | Neoformat
+	"Intero auto reloading
+	autocmd BufWritePost * InteroReload
+augroup END
 
 "Moving from repl
 tnoremap <C-H> <C-\><C-n><C-W>h
@@ -15,7 +20,6 @@ tnoremap <C-S> <C-\><C-n><C-W>l
 nnoremap <silent> <leader>io :InteroOpen<CR>
 nnoremap <silent> <leader>im :InteroLoadCurrentModule<CR>
 nnoremap <silent> <leader>if :InteroLoadCurrentFile<CR>
-autocmd BufWritePost * InteroReload
 
 let g:haskell_classic_highlighting = 1
 let g:haskell_indent_if = 3
