@@ -23,4 +23,9 @@ let g:neomake_buf_maker = {
 
 let g:neomake_proto_enabled_makers = ['buf']
 
-autocmd BufWritePre * Neoformat
+augroup proto
+  autocmd!
+	" Auto Formatting
+  autocmd BufWritePre * silent! undojoin | Neoformat
+augroup END
+
