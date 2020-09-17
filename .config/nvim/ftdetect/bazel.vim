@@ -1,5 +1,5 @@
-au BufNewFile,BufRead *.bazel set filetype=bazel
-au BufNewFile,BufRead *.bzl set filetype=bazel
-au BufNewFile,BufRead WORKSPACE set filetype=bazel
-au BufNewFile,BufRead BUILD set filetype=bazel
-au BufNewFile,BufRead *.BUILD set filetype=bazel
+au BufNewFile,BufReadPre *.bazel set filetype=bazel
+au BufNewFile,BufReadPre *.bzl set filetype=bazel
+au BufNewFile,BufReadPre WORKSPACE set filetype=bazel
+au BufNewFile,BufReadPre BUILD set filetype=bazel
+au BufNewFile,BufReadPre *.BUILD set filetype=bazel
