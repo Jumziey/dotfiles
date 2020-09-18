@@ -69,6 +69,8 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('sirtaj/vim-openscad')
 	"coc intellisense context auto completion
 	call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
+	"godot stuff
+	call dein#add('habamax/vim-godot')
 	call dein#end()
 	call dein#save_state()
 endif
