@@ -181,5 +181,5 @@ bar {
 
 # green plank : #375d59
 
-gaps inner 6 
+gaps inner 4 
 for_window [class=".*"] border pixel 2
