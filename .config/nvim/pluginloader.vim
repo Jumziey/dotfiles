@@ -27,11 +27,7 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('vim-airline/vim-airline-themes')
 	"Awesome golang plugin
 	call dein#add('fatih/vim-go')
-	"Syntax checker
-	"call dein#add('vim-syntastic/syntastic')
 	call dein#add('neomake/neomake')
-	"Shows hex colors etc
-	call dein#add('chrisbra/Colorizer')
 	"Latex integration
 	call dein#add('lervag/vimtex')
 	"Currently used theme

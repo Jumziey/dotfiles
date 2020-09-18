@@ -180,6 +180,11 @@ bar {
 
 
 # green plank : #375d59
+# red plank: #703a2a
+# grey plank: #252523
+# grey plank light: #55554d
+# dark-blue: #16252b
+# dark-blue-lighter: #243339
 
 gaps inner 4 
 for_window [class=".*"] border pixel 2

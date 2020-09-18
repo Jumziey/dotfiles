@@ -37,11 +37,7 @@ noremap <C-S> <C-W>l
 noremap <c-g> <c-]>
 noremap <c-c> <c-o>
 
-
-"Tabbing
 set ts=2 sw=2 ai
-autocmd Filetype php setlocal ts=4 sw=4 expandtab
-autocmd FileType conf setlocal ts=2 sts=2 sw=2 ai
 
 "Spelling
 set spelllang=en,sv
@@ -63,3 +59,7 @@ set clipboard+=unnamedplus
 for f in split(glob(configPath . 'default/*.vim'), '\n')
     exe 'source' f
 endfor
+
+
+command ProfileStart  :profile start profile.log | profile func * | profile file * 
+command ProfileStop  :profile stop | qall

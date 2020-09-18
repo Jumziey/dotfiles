@@ -3,6 +3,7 @@ xbindkeys
 twmnd &
 blueman-applet &
 nm-applet &
+flameshot &
 
 # Not a requirement, but useful especially for screen configs
 LOCAL="$HOME"/.xinitrc-local
