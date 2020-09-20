@@ -67,6 +67,8 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
 	"godot stuff
 	call dein#add('habamax/vim-godot')
+	"vader - tests for vimscripts
+	call dein#add('junegunn/vader.vim')
 	call dein#end()
 	call dein#save_state()
 endif
