@@ -9,7 +9,3 @@ augroup cpp
 	" QT syntax
 	autocmd BufEnter,BufWritePost * runtime expand('syntax/qt.vim')
 augroup END
-
-let g:neomake_cpp_enabled_makers = ['']
-call neomake#configure#automake('')
-
