@@ -186,5 +186,5 @@ bar {
 # dark-blue: #16252b
 # dark-blue-lighter: #243339
 
-gaps inner 6 
+gaps inner 4 
 for_window [class=".*"] border pixel 2
