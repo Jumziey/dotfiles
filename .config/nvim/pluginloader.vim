@@ -11,6 +11,8 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#begin(configPath . 'pluginInstalls')
 	call dein#add(configPath . 'pluginInstalls//repos/github.com/Shougo/dein.vim')
 
+	"side pane with tags (funcs etc)
+	" call dein#add('majutsushi/tagbar')
 	"Fuzzy finder
 	call dein#add('ctrlpvim/ctrlp.vim')
 	"Status bar
@@ -69,6 +71,9 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('habamax/vim-godot')
 	"vader - tests for vimscripts
 	call dein#add('junegunn/vader.vim')
+	"Graphviz
+	call dein#add('liuchengxu/graphviz.vim')
+
 	call dein#end()
 	call dein#save_state()
 endif
