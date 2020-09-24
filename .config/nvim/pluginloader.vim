@@ -23,6 +23,8 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('airblade/vim-gitgutter')
 	"Git integration vim
 	call dein#add('tpope/vim-fugitive')
+	"To run Gpush asyncronously
+	call dein#add('tpope/vim-dispatch')
 	"Cool themes for status bar
 	call dein#add('vim-airline/vim-airline-themes')
 	"Awesome golang plugin
