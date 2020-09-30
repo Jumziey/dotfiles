@@ -1,6 +1,7 @@
 runtime platform.vim
 
 "dein Scripts-----------------------------
+let g:dein#auto_recache = 1
 if &compatible
 	set nocompatible               " Be iMproved
 endif
@@ -72,7 +73,7 @@ if dein#load_state(configPath . 'pluginInstalls')
 	"vader - tests for vimscripts
 	call dein#add('junegunn/vader.vim')
 	"Graphviz
-	call dein#add('liuchengxu/graphviz.vim')
+	call dein#add('jumziey/graphviz.vim')
 
 	call dein#end()
 	call dein#save_state()
