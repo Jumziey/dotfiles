@@ -9,3 +9,6 @@ augroup cpp
 	" QT syntax
 	autocmd BufEnter,BufWritePost * runtime expand('syntax/qt.vim')
 augroup END
+
+command Bazel :bot new | resize 20 | :te bazel test //cpp/grpc/vectorcontrolclient:vectorcontrolclient_test
+map <F9> :Bazel<CR>
