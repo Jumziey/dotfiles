@@ -74,7 +74,9 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('junegunn/vader.vim')
 	"Graphviz
 	call dein#add('jumziey/graphviz.vim')
-
+	"for the tab completing Bazel command
+	call dein#add('google/vim-maktaba') "dependency
+	call dein#add('bazelbuild/vim-bazel')
 	call dein#end()
 	call dein#save_state()
 endif
