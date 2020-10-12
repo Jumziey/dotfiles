@@ -40,8 +40,7 @@ def create_class_skeleton(name)
 
     header = File.open(header_file, 'w')
     s=<<EOF
-#ifndef #{base_name.upcase}_H
-#define #{base_name.upcase}_H
+#pragma once
 
 #include <QObject>
 
@@ -62,7 +61,6 @@ private:
     //[members]
     //[end of members]
 };
-#endif
 EOF
   header.write s
   header.close
