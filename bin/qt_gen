@@ -47,7 +47,7 @@ def create_class_skeleton(name)
 class #{class_name}: public QObject {
 Q_OBJECT
 public:
-    explicit #{class_name}(QObject *parent=0);
+    explicit #{class_name}(QObject *parent=nullptr);
 
     //[getter]
     //[end of getter]
