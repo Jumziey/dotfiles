@@ -140,6 +140,3 @@ export EDITOR="nvim"
 
 #Canboat
 export PATH=$PATH:/opt/canboat/bin
-
-#broot
-source /home/jumzi/.config/broot/launcher/bash/br
