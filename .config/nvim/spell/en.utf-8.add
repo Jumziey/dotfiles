@@ -94,7 +94,7 @@ plugins
 brutella
 stdout
 importpath
-
 enablecommand
 configs
 shellcheck
+Operating
