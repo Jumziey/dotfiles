@@ -32,6 +32,8 @@ noremap <C-H> <C-W>h
 noremap <C-T> <C-W>j
 noremap <C-N> <C-W>k
 noremap <C-S> <C-W>l
+noremap <C-R>h :resize +5<CR>
+noremap <C-R>s :resize -5<CR>
 
 "link following
 noremap <c-g> <c-]>
