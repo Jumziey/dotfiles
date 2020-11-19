@@ -102,7 +102,7 @@ def add_property(klass, type, name, readonly)
         elsif line =~ /\[end of signals\]/
             lines.insert(i, "\tvoid #{reader}Changed(#{type});")
         elsif line =~ /\[end of members\]/
-            lines.insert(i, "\t#{type} m_#{reader};")
+            lines.insert(i, "\t#{type} #{reader}_;")
         else
             i = i - 1
         end
@@ -115,15 +115,15 @@ def add_property(klass, type, name, readonly)
     f = File.open(source_file, "a+")
     f.puts <<EOF
 #{type} #{class_name}::#{reader}() const {
-    return m_#{reader};
+    return #{reader}_;
 }
 
 EOF
     f.puts <<EOF
 void #{class_name}::set#{writer}(#{type} #{reader[0]}) {
-    if (m_#{reader} != #{reader[0]}) {
-        m_#{reader} = #{reader[0]};
-        emit #{reader}Changed(m_#{reader});
+    if (#{reader}_ != #{reader[0]}) {
+        #{reader}_ = #{reader[0]};
+        emit #{reader}Changed(#{reader}_);
     }
 }
 
