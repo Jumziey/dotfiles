@@ -12,8 +12,8 @@ map <F12> :GoAlternate<CR>
 "Tag following for go
 "let g:go_def_mapping_enabled = 0
 "must be set in default.vim
-noremap <C-g> :GoDef<CR>
-noremap <C-c> :GoDefPop<CR>
+noremap <silent> gd :GoDef<CR>
+"noremap <C-o> :GoDefPop<CR>
 
 noremap <c-t> <Nop>
 noremap <c-t> <C-W>j
