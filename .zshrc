@@ -60,14 +60,6 @@ tar_compress() {
 	tar -czvf $1.tar.gz $1
 }
 
-docker_activate_konftel() {
-	export DOCKER_HOST="tcp://10.134.102.104:2375"
-}
-
-docker_deactivate_konftel() {
-	unset DOCKER_HOST
-}
-
 recursive_replace() {
 	command="find $PWD -type f -print0 | xargs -0 sed -i \"s/${1}/${2}/g\""
 	echo $command
