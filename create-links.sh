@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ignores=(
+  "create-links.sh"
   "dot-funcs.sh"
   "dot-funcs.bats"
   "create-symlinks.sh"
