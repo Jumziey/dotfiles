@@ -1,0 +1,4 @@
+#!/bin/bash
+docker run --device /dev/ttyACM0 -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD:/root twhtanghk/docker.printrun
+
+
