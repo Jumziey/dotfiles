@@ -13,7 +13,7 @@ function! s:check_back_space() abort
 endfunction
 
 " Use K to show documentation in preview window
-nnoremap <silent> <Leader>k :call <SID>show_documentation()<CR>
+nnoremap <silent> <Leader>d :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
