@@ -77,6 +77,10 @@ if dein#load_state(configPath . 'pluginInstalls')
 	"for the tab completing Bazel command
 	call dein#add('google/vim-maktaba') "dependency
 	call dein#add('bazelbuild/vim-bazel')
+	"PlantUML previewer
+	call dein#add('tyru/open-browser.vim') "dep
+	call dein#add('weirongxu/plantuml-previewer.vim')
+
 	call dein#end()
 	call dein#save_state()
 endif
