@@ -13,7 +13,7 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add(configPath . 'pluginInstalls//repos/github.com/Shougo/dein.vim')
 
 	"side pane with tags (funcs etc)
-	" call dein#add('majutsushi/tagbar')
+	call dein#add('majutsushi/tagbar')
 	"Fuzzy finder
 	call dein#add('ctrlpvim/ctrlp.vim')
 	"Status bar
