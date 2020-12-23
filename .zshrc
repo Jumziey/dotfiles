@@ -1,4 +1,9 @@
-# Lines configured by zsh-newuser-install
+
+# Setting environment variables here
+# So do not have to check that i actually
+# use the variables set.
+# shellcheck disable=SC2034
+
 SAVEHIST=1000
 setopt appendhistory notify
 unsetopt autocd beep extendedglob nomatch
@@ -19,7 +24,7 @@ alias rg='rg -p'
 alias less='less -r'
 
 tsconv() {
-    date -d @$1
+    date -d "@$1"
 }
 lines() {
 	find . -type f -print0 | wc -l --files0-from=-
@@ -37,9 +42,9 @@ ascii_convert() {
 	[ -d $tmpdir ] || mkdir tmpdir
 	rm $tmpdir/temp.pbm
 
-	echo $1
-	echo $2
-	convert -geometry $1 $2 $tmpdir/temp.pbm
+	echo "$1"
+	echo "$2"
+	convert -geometry "$1" "$2" $tmpdir/temp.pbm
 	pbmtoascii < $tmpdir/temp.pbm
 	
 }
@@ -49,21 +54,21 @@ ascii_convert2() {
 	[ -d $tmpdir ] || mkdir tmpdir
 	rm $tmpdir/temp.pbm
 
-	echo $1
-	echo $2
-	convert -geometry $1 $2 $tmpdir/temp.pbm
+	echo "$1"
+	echo "$2"
+	convert -geometry "$1" "$2" $tmpdir/temp.pbm
 	pbmtoascii -2x4 < $tmpdir/temp.pbm
 	
 }
 
 tar_compress() {
-	tar -czvf $1.tar.gz $1
+	tar -czvf "$1".tar.gz "$1"
 }
 
 recursive_replace() {
-	command="find $PWD -type f -print0 | xargs -0 sed -i \"s/${1}/${2}/g\""
-	echo $command
-	eval $command
+	command="find \"$PWD\" -type f -print0 | xargs -0 sed -i \"s/${1}/${2}/g\""
+	echo "$command"
+	eval "$command"
 }
 
 lowercase() {
@@ -71,10 +76,11 @@ lowercase() {
 }
 
 vartype() {
-    local var=$( declare -p $1 )
+		local var
+    var=$( declare -p "$1" )
     local reg='^declare -n [^=]+=\"([^\"]+)\"$'
     while [[ $var =~ $reg ]]; do
-            var=$( declare -p ${BASH_REMATCH[1]} )
+            var=$( declare -p "${BASH_REMATCH[1]}" )
     done
 
     case "${var#declare -}" in
