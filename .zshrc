@@ -132,3 +132,14 @@ export EDITOR="nvim"
 
 #Canboat
 export PATH=$PATH:/opt/canboat/bin
+
+# Support bash style completion
+autoload -Uz bashcompinit
+bashcompinit
+
+#AWS-cli v2 completion
+AWS_COMPLETER=/usr/bin/aws_completer
+if [[ -f "$AWS_COMPLETER" ]]; then 
+	complete -C "$AWS_COMPLETER" aws
+fi
+
