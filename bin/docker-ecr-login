@@ -1,0 +1,44 @@
+#!/bin/bash
+
+options=$(getopt \
+  --options "" \
+  --longoptions help,region: \
+  -- "$@")
+eval set --"$options"
+
+REGION=eu-north-1
+
+usage() {
+  echo "Usage: $0 [--region=<aws-region>] [--help]"
+  echo -e "\t--help \n\t\tdescribes how to use the tool"
+  echo -e "\t--region \n\t\tchooses which ecr to authenticate docker to \n\t\t(DEFAULT = $REGION)"
+  echo ""
+  echo -e "Authenticates a docker daemon to the ecr region specified "
+  echo -e "you need an authenticated aws cli installed"
+  echo ""
+
+  exit 1
+}
+
+while true; do
+  case "$1" in
+  --region)
+    shift
+    REGION="$1"
+    ;;
+
+  --help)
+    usage
+    exit 1
+    ;;
+
+  --)
+    shift
+    break
+    ;;
+  esac
+  shift
+done
+
+AWS_ACCOUNT_ID=$(aws sts get-caller-identity | awk '$1 ~ "Account" {print $2}' | sed "s/'//g")
+aws ecr get-login-password | docker login --username AWS --password-stdin "$AWS_ACCOUNT_ID".dkr.ecr."$REGION".amazonaws.com
