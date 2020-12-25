@@ -1,13 +1,3 @@
-#backup_folder="dotfiles_old"
-#timestamp=$(date +%D-%T)
-#backup() {
-#	file=$backup_folder/$1
-#	if [ -f $file ]
-#
-#
-#
-#}
-
 ignored() {
   test="$1"
   shift
@@ -22,12 +12,6 @@ ignored() {
   false
   return
 }
-
-# exists_in_root() {
-#   root="$1"
-#   file="$2"
-#   [ -f "$root/$file" ]
-# }
 
 backup() {
   backup_root="$1"

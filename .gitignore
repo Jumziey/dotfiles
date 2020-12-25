@@ -1,4 +1,4 @@
 .config/nvim/pluginInstalls/**
 .config/nvim/spell/en.utf-8.add.spl
-backup-*
-backup
+./backup-*
+./backup

@@ -1,6 +1,6 @@
 #!/usr/bin/env bats
 
-source dot-funcs.sh
+source backup.sh
 
 @test "addition using bc" {
   result="$(echo 2+2 | bc)"

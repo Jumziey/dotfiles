@@ -12,8 +12,8 @@ ignores=(
 )
 
 script_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-# shellcheck source=dot-funcs.sh
-source "$script_root/dot-funcs.sh"
+# shellcheck source=bin/lib/backup/backup.sh
+source "$script_root/bin/lib/backup/backup.sh"
 host_root="$HOME"
 
 backup_root="$script_root/backup"
