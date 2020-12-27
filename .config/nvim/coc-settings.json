@@ -1,7 +1,7 @@
 {
 	"list.normalMappings": {
-       "t": "do:next"
-       "n": "do:previous"
+       "t": "do:next",
+       "n": "do:previous",
        "q": "do:exit"
    },
 }
