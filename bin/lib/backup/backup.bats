@@ -51,11 +51,11 @@ source backup.sh
 	test_file="backup/this/test_file-$(date +%N).txt"
 	backup_root="$BATS_TMPDIR/backup-$(date +%N)"
 	test_host_root="$BATS_TMPDIR/host-$(date +%N)"
-	mkdir -p "$(dirname $test_host_root/$test_file)"
+	mkdir -p "$(dirname "$test_host_root"/"$test_file")"
 	touch "$test_host_root/$test_file"
 
-	backup $backup_root $test_host_root $test_file
-	echo "does this exist?: "$backup_root/$test_file""
+	backup "$backup_root" "$test_host_root" "$test_file"
+	echo "does this exist?: $backup_root/$test_file"
 	[ -f "$backup_root/$test_file" ]; 
 }
 
@@ -63,9 +63,9 @@ source backup.sh
 	test_file="backup/this/test_file-$(date +%N).txt"
 	backup_root="$BATS_TMPDIR/backup-$(date +%N)"
 	test_host_root="$BATS_TMPDIR/host-$(date +%N)"
-	mkdir -p "$(dirname $test_host_root/$test_file)"
+	mkdir -p "$(dirname "$test_host_root"/"$test_file")"
 
-	backup $backup_root $test_host_root $test_file
+	backup "$backup_root" "$test_host_root" "$test_file"
 	! [ -f "$backup_root/$test_file" ]
 }
 
@@ -73,10 +73,10 @@ source backup.sh
 	test_file="backup/this/test_file-$(date +%N).txt"
 	backup_root="$BATS_TMPDIR/backup-$(date +%N)"
 	test_host_root="$BATS_TMPDIR/host-$(date +%N)"
-	mkdir -p "$(dirname $test_host_root/$test_file)"
+	mkdir -p "$(dirname "$test_host_root"/"$test_file")"
 	touch "$test_host_root/$test_file"
 
-	backup $backup_root $test_host_root $test_file
+	backup "$backup_root" "$test_host_root" "$test_file"
 	! [ -f "$test_host_root/$test_file" ]
 }
 
@@ -84,11 +84,11 @@ source backup.sh
 	test_file="backup/this/test_file-$(date +%N).txt"
 	backup_root="$BATS_TMPDIR/backup-$(date +%N)"
 	test_host_root="$BATS_TMPDIR/host-$(date +%N)"
-	mkdir -p "$(dirname $test_host_root/$test_file)"
+	mkdir -p "$(dirname "$test_host_root"/"$test_file")"
 	link_test_file=$BATS_TMPDIR/link-test_file.txt
-	ln -sfn $link_test_file "$test_host_root/$test_file"
+	ln -sfn "$link_test_file" "$test_host_root"/"$test_file"
 
-	backup $backup_root $test_host_root $test_file
+	backup "$backup_root" "$test_host_root" "$test_file"
 	! [ -f "$backup_root/$test_file" ]
 }
 
@@ -96,12 +96,12 @@ source backup.sh
 	test_file="backup/this/test_file-$(date +%N).txt"
 	backup_root="$BATS_TMPDIR/backup-$(date +%N)"
 	test_host_root="$BATS_TMPDIR/host-$(date +%N)"
-	mkdir -p "$(dirname $test_host_root/$test_file)"
+	mkdir -p "$(dirname "$test_host_root"/"$test_file")"
 
 	link_test_file=$BATS_TMPDIR/link-test_file.txt
-	ln -sfn $link_test_file "$test_host_root/$test_file"
+	ln -sfn "$link_test_file" "$test_host_root"/"$test_file"
 
-	backup $backup_root $test_host_root $test_file
+	backup "$backup_root" "$test_host_root" "$test_file"
 	! [ -f "$test_host_root/$test_file" ]
 }
 
@@ -112,11 +112,11 @@ source backup.sh
 
 	test_fileContent="cool content"
 	mkdir -p "$(dirname "$test_script_root/$test_file")"
-	echo $test_fileContent >"$test_script_root/$test_file"
+	echo "$test_fileContent" >"$test_script_root"/"$test_file"
 
 
-	link_dotfile $test_script_root $test_host_root $test_file
-	linkedFileContent="$(<$test_host_root/$test_file)"
+	link_dotfile "$test_script_root" "$test_host_root" "$test_file"
+	linkedFileContent="$(<"$test_host_root"/"$test_file")"
 	echo "linkedtest_filecontent: $linkedFileContent"
 	echo "test_fileContent: $test_fileContent"
 	[ "$test_fileContent" = "$linkedFileContent" ]
@@ -127,7 +127,7 @@ source backup.sh
 	test_host_root="$BATS_TMPDIR/host-$(date +%N)"
 	test_file="backup/this/test_file-$(date +%N).txt"
 
-	run link_dotfile $test_script_root $test_host_root $test_file
+	run link_dotfile "$test_script_root" "$test_host_root" "$test_file"
 	echo "output: $output"
 	echo "constructed: $test_script_root/$test_file not found"
 	[ "$output" = "$test_script_root/$test_file not found" ]
