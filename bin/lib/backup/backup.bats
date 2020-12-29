@@ -132,28 +132,3 @@ source backup.sh
 	echo "constructed: $test_script_root/$test_file not found"
 	[ "$output" = "$test_script_root/$test_file not found" ]
 }
-
-@test "create_backup_root creates backup_root in empty root" {
-	test_root="$BATS_TMPDIR/root-$(date +%N)"
-	test_backup_root="$test_root/backup_folder_name"
-	create_backup_root $test_backup_root
-	echo "checking: $test_backup_root"
-	[ -d "$test_backup_root" ]
-}
-
-@test "create_backup_root backs up old backup if one already exists " {
-	test_root="$BATS_TMPDIR/root-$(date +%N)"
-	test_backup_root="$test_root/backup"
-	create_backup_root $test_backup_root
-	create_backup_root $test_backup_root
-	folders_found="$(find $test_root -type d)"
-	number_of_folders="$(find $test_root -type d | wc -l)"
-	echo "folders found: $folders_found"
-	echo "nr of folders: $number_of_folders"
-	#counts the $test_root aswell, thus 3 instead of the
-	#more intuitive 2
-	#$test_root/
-	#$test_root/backup
-	#$test_root/backup-<some-date>
-	[ $number_of_folders -eq 3 ] 
-}

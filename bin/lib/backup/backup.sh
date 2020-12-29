@@ -60,17 +60,3 @@ link_dotfile() {
   #Finally, lets make the symlink
   ln -sfn "$script_root/$file" "$host_root/$file"
 }
-
-create_backup_root() {
-  backup_root="$1"
-
-  if [ -d "$backup_root" ]; then
-    backup_root_old="$backup_root-$(date +%m-%d-%y-%N)"
-    echo "Moving $backup_root to $backup_root_old"
-    mv "$backup_root" "$backup_root_old"
-  fi
-
-  echo "Creating a fresh $backup_root"
-  mkdir -p "$backup_root"
-
-}

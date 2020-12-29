@@ -16,8 +16,8 @@ script_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 source "$script_root/bin/lib/backup/backup.sh"
 host_root="$HOME"
 
-backup_root="$script_root/backup"
-create_backup_root "$backup_root"
+backup_root="$script_root/backups/$(date +%m-%d-%y-%N)"
+mkdir -p "$backup_root"
 
 dotfiles=$(
   cd "$script_root" || exit
