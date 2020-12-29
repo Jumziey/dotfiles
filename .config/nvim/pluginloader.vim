@@ -7,7 +7,7 @@ if &compatible
 	set nocompatible
 endif
 " Required:
-exec "set runtimepath+=" . configPath . expand('pluginInstalls/repos/github.com/Shougo/dein.vim')
+exec 'set runtimepath+=' . configPath . expand('pluginInstalls/repos/github.com/Shougo/dein.vim')
 " Required:
 if dein#load_state(configPath . 'pluginInstalls')
 	call dein#begin(configPath . 'pluginInstalls')
