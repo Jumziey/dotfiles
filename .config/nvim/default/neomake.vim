@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 let g:neomake_open_list = 1
 let g:neomake_list_height = 10
 
