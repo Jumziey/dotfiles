@@ -1,4 +1,4 @@
-set ts=4 sw=4 ai
+set tabstop=4 sw=4 ai
 set expandtab
 map <buffer> <F12> :A<CR>
 
