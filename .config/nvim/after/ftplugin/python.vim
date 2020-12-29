@@ -13,7 +13,11 @@ let g:syntastic_python_flake8_args='--ignore=E231,E226,E251,E501,E301,E128'
 
 "Autoformattng
 let g:neoformat_enabled_python = ['yapf']
-autocmd BufWritePre * Neoformat
+augroup python
+	autocmd !
+	autocmd BufWritePre * Neoformat
+augroup END
+
 "Running script
 nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 
