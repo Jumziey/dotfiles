@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 "nvim-markdown-preview
 map <F9> :MarkdownPreview<CR>
 
