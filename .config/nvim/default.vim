@@ -39,7 +39,7 @@ noremap <C-R>s :resize -5<CR>
 noremap <c-g> <c-]>
 noremap <c-c> <c-o>
 
-set ts=2 sw=2 ai
+set tabstop=2 sw=2 ai
 
 "Spelling
 set spelllang=en,sv
