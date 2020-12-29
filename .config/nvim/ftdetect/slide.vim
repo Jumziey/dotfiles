@@ -1,1 +1,4 @@
-au BufNewFile,BufRead *.slide set filetype=slide
+augroup slide_detect
+	autocmd!
+	autocmd BufNewFile,BufRead *.slide set filetype=slide
+augroup END
