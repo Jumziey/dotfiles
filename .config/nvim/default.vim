@@ -1,10 +1,6 @@
-"Default settings
-
 "
 " NEOVIM DEFAULT SETTINGS
 "
-"
-
 "see https://medium.com/usevim/vim-101-set-hidden-f78800142855
 set hidden
 
@@ -56,12 +52,10 @@ noremap <c-c> :tselect<CR>
 "Yank to clipboard
 set clipboard+=unnamedplus
 
-
 "Source everything in default map (plugin settings)
 for f in split(glob(configPath . 'default/*.vim'), '\n')
     exe 'source' f
 endfor
-
 
 command ProfileStart  :profile start profile.log | profile func * | profile file * 
 command ProfileStop  :profile stop | qall
