@@ -1,3 +1,4 @@
 FROM alpine:latest 
 
-RUN apk add shellcheck
+RUN apk add --no-cache shellcheck
+RUN apk add --no-cache vint
