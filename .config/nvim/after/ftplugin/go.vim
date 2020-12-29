@@ -2,7 +2,7 @@
 set autowrite
 let g:go_statusline_duration = 1
 let g:go_highlight_types = 1
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
 map <F8> :GoBuild<CR>
 map <F9> :GoRun<CR>
 map <F11> :GoTest<CR>
