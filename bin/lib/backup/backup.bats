@@ -29,24 +29,6 @@ source backup.sh
 	! ignored "$does_not_exists" "${ignores[@]}"
 }
 
-# @test "exists_in_root finds test_file" {
-# 	root_dir="$BATS_TMPDIR"
-# 	test_file="test/folder/test_file.txt"
-# 	mkdir -p $(dirname "$root_dir/$test_file")
-# 	touch "$root_dir/$test_file"
-# 
-# 	exists_in_root $root_dir $test_file
-# }
-# 
-# @test "exists_in_root does not give false positives" {
-# 	root_dir="$BATS_TMPDIR"
-# 	test_file="test/folder/test_file.txt"
-# 	mkdir -p $(dirname "$root_dir/$test_file")
-# 	touch "$root_dir/$test_file"
-# 
-# 	! exists_in_root $root_dir "/a/non/existing/test_file.txt"
-# }
-
 @test "backup moves test_file to backup" {
 	test_file="backup/this/test_file-$(date +%N).txt"
 	backup_root="$BATS_TMPDIR/backup-$(date +%N)"
