@@ -1,9 +1,10 @@
+" vint: -ProhibitSetNoCompatible
 runtime platform.vim
 
 "dein Scripts-----------------------------
 let g:dein#auto_recache = 1
 if &compatible
-	set nocompatible               " Be iMproved
+	set nocompatible
 endif
 " Required:
 exec "set runtimepath+=" . configPath . expand('pluginInstalls/repos/github.com/Shougo/dein.vim')
