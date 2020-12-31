@@ -6,5 +6,5 @@ augroup sh
   autocmd BufWritePre * silent! undojoin | Neoformat
 augroup END
 
-map <buffer> <F11> :execute "!bats " . fnamemodify(expand('%:p'), ':r') . ".bats"<CR>
+map <buffer> <F11> :execute "terminal cd " . fnamemodify(expand('%:p'), ':h') . ";" . "bats " . fnamemodify(expand('%:t'), ':r') . ".bats"<CR>
 map <buffer> <F12> :execute "edit " . fnamemodify(expand('%:p'), ':r') . ".bats\n"<CR>
