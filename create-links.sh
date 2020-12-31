@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ignores=(
+  "dev-bin/nvim-config-lint"
   "win-nvim-links.ps1"
   "create-links.sh"
   "dot-funcs.sh"
