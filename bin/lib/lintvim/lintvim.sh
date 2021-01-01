@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-source ../filearray/filearray.sh
+SCRIPT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)
+# shellcheck source=../env
+source "$SCRIPT_ROOT/../env"
+
+# shellcheck source=../filearray/filearray.sh
+source "$LIB_ROOT/filearray/filearray.sh"
 
 lintsinglevimfile() {
 	file="$1"
