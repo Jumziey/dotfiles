@@ -3,4 +3,4 @@ version: 0.2
 phases:
   build:
     commands:
-      - dev-bin/nvim-config-lint
+      - dev-bin/check-repo

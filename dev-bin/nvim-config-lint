@@ -4,13 +4,18 @@ SCRIPT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)
 # shellcheck source=../bin/lib/env
 source "$SCRIPT_ROOT/../bin/lib/env"
 
+# shellcheck source=../bin/lib/log/log.sh
+source "$LIB_ROOT/log/log.sh"
+
 # shellcheck source=../bin/lib/lintvim/lintvim.sh
 source "$LIB_ROOT/lintvim/lintvim.sh"
 lintvim "$PROJECT_ROOT/.config/nvim"
 
 exit_code="$?"
 if [[ "$exit_code" -eq 0 ]]; then 
-	echo "SUCCESS: vim config files passed the linting"
+	log_success "nvim config files linted great"
+else
+	log_fail "nvim configs did not pass the linting"
 fi
 
 exit "$exit_code" #Passing along the error code
