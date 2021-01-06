@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+echo "pwd: $PWD"
+# shellcheck disable=SC2034
+while read -r local_ref local_sha remote_ref remote_sha; do
+	if [[ $(basename "$remote_ref") == "master" ]]; then
+		./dev-bin/check-repo
+	fi
+done

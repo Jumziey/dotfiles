@@ -4,7 +4,7 @@ SCRIPT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)
 # shellcheck source=../bin/lib/env
 source "$SCRIPT_ROOT/../bin/lib/env"
 
-ln -sf "$PROJECT_ROOT/repo-hooks/pre-push" "$PROJECT_ROOT/.git/hooks/pre-push"
+ln -sf "$PROJECT_ROOT/dev-bin/repo-hooks/pre-push" "$PROJECT_ROOT/.git/hooks/pre-push"
 
 
 
