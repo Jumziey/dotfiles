@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+SCRIPT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)
+# shellcheck source=../bin/lib/env
+source "$SCRIPT_ROOT/../bin/lib/env"
+
+# shellcheck source=../bin/lib/log/log.sh
+source "$LIB_ROOT/log/log.sh"
+
+log_info "Searching for all the bash files in repo"
+find "$PROJECT_ROOT" -type f \
+-path "$PROJECT_ROOT/.git*" -prune -o \
+-path "$PROJECT_ROOT/backups*" -prune -o \
+-exec bash -c '[[ "$( file -bi "$1" )" == */x-shellscript* ]]' bash {} ';' \
+-print \
+| tr '\012' ' ' \
+| ( 
+	mapfile -d ' ' -t bash_files; 
+	log_info "running shellcheck"
+	if shellcheck "${bash_files[@]}"; then
+		log_success "Bash linting passed!" 
+		exit 0
+	else
+		log_fail "Bash linting did not pass"
+		exit 1
+	fi
+)
+
+
