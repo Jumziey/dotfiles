@@ -113,7 +113,6 @@ alias xcl='tr -d [:space:] | xclip -selection clipboard'
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:.
 export TERMINAL=alacritty
-export BROWSER=firefox
 export PATH=$PATH:~/.local/bin
 
 #Firefox
