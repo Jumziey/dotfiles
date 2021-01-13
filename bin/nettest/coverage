@@ -7,4 +7,4 @@ echo "ssh pi@<pi adress>"
 echo "ntpdate <laptop ip>"
 echo "#############################"
 echo ""
-flent tcp_download --length 800 -p totals --absolute-time -H $1 -o tcp_download_plot.png 
+flent tcp_download --length 800 -p totals --absolute-time -H "$1" -o tcp_download_plot.png 
