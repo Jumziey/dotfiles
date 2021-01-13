@@ -7,7 +7,8 @@ source "$SCRIPT_ROOT/../bin/lib/env"
 # shellcheck source=../bin/lib/log/log.sh
 source "$LIB_ROOT/log/log.sh"
 
-log_info "Searching for all the bash files in repo"
+log_info "running linter on all bash files in the repo"
+log_info "Searching for all the bash files in repo..." 1
 find "$PROJECT_ROOT" -type f \
 -path "$PROJECT_ROOT/.git*" -prune -o \
 -path "$PROJECT_ROOT/backups*" -prune -o \
@@ -16,12 +17,12 @@ find "$PROJECT_ROOT" -type f \
 | tr '\012' ' ' \
 | ( 
 	mapfile -d ' ' -t bash_files; 
-	log_info "running shellcheck"
+	log_info "running shellcheck" 1
 	if shellcheck -x -P SCRIPTDIR "${bash_files[@]}"; then
-		log_success "Bash linting passed!" 
+		log_success "Bash linting passed!" 1
 		exit 0
 	else
-		log_fail "Bash linting did not pass"
+		log_fail "Bash linting did not pass" 1
 		exit 1
 	fi
 )
