@@ -17,7 +17,7 @@ find "$PROJECT_ROOT" -type f \
 | ( 
 	mapfile -d ' ' -t bash_files; 
 	log_info "running shellcheck"
-	if shellcheck "${bash_files[@]}"; then
+	if shellcheck -x -P SCRIPTDIR "${bash_files[@]}"; then
 		log_success "Bash linting passed!" 
 		exit 0
 	else
