@@ -31,7 +31,7 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('vim-airline/vim-airline-themes')
 	"Awesome golang plugin
 	call dein#add('fatih/vim-go')
-	call dein#add('jumziey/neomake', {'merged': 0})
+	call dein#add('jumziey/neomake')
 	"Latex integration
 	call dein#add('lervag/vimtex')
 	"Currently used theme
