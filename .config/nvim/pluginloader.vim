@@ -82,6 +82,8 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('tyru/open-browser.vim') "dep
 	call dein#add('weirongxu/plantuml-previewer.vim')
  	call dein#add('aklt/plantuml-syntax')
+	"A global test plugin!
+	call dein#add('vim-test/vim-test')
 
 	call dein#end()
 	call dein#save_state()
