@@ -148,3 +148,6 @@ if [[ -f "$AWS_COMPLETER" ]]; then
 	complete -C "$AWS_COMPLETER" aws
 fi
 
+#Chrome Headless variable (for runnig ng tests)
+export CHROME_BIN="/usr/bin/chromium"
+
