@@ -1,3 +1,5 @@
+call neomake#configure#automake('rw')
+
 "indenting
 set tabstop=4 |
 set softtabstop=4 |
