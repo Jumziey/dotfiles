@@ -10,7 +10,7 @@ set fileformat=unix
 "Autoformattng
 let g:neoformat_enabled_python = ['yapf']
 augroup python
-	autocmd !
+	autocmd!
 	autocmd BufWritePre * Neoformat
 augroup END
 
