@@ -11,7 +11,7 @@ set autoindent |
 set fileformat=unix
 
 "Autoformattng
-let g:neoformat_enabled_python = ['yapf']
+let g:neoformat_enabled_python = ['autopep8']
 augroup python
 	autocmd!
 	autocmd BufWritePre * Neoformat
