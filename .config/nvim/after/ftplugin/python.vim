@@ -1,5 +1,6 @@
 call neomake#configure#automake('rw')
-let g:neomake_python_enabled_makers = [ 'pylint' ]
+let g:neomake_python_enabled_makers = [ 'pylint', 'mypy' ]
+
 
 "indenting
 set tabstop=4 |
