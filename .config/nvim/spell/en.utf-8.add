@@ -104,3 +104,5 @@ dein
 couldn't
 Workflow
 proto
+venv
+mypy
