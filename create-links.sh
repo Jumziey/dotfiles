@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ignores=(
   "dev-bin/nvim-config-lint"
