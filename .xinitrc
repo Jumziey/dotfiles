@@ -13,5 +13,4 @@ fi
 
 # Needs to be run after screen resolution changes
 # something thats often set in xinitrc-local
-feh --bg-scale $HOME/.config/desktop/background.jpg &
 exec i3 
