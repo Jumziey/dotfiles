@@ -88,6 +88,8 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('floobits/floobits-neovim')
 	"vim-nix
 	call dein#add('LnL7/vim-nix')
+	"ripgrep in vim
+	call dein#add('jremmen/vim-ripgrep')
 	
 
 	call dein#end()
