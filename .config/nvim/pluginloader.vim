@@ -86,6 +86,8 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('vim-test/vim-test')
 	"Pair programming
 	call dein#add('floobits/floobits-neovim')
+	"vim-nix
+	call dein#add('LnL7/vim-nix')
 	
 
 	call dein#end()
