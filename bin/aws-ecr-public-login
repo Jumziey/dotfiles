@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+PROFILE="$1"
+REPO="$2"
+
+if [ -z "${PROFILE}" ] ; then
+	PROFILE=default
+fi
+
+if [ -z "${REPO}" ] ; then
+	read -rp "Repo: " REPO
+fi
+
+
+aws ecr-public get-login-password --region us-east-1 --profile "$PROFILE" | docker login --username AWS --password-stdin "$REPO"
