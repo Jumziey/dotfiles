@@ -10,6 +10,8 @@ ignores=(
   ".gitignore"
   ".nvimrc"
 	"buildspec.yml"
+	"nixos/configuration.nix"
+	"nixos/hardware-configuration.nix"
 )
 
 script_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
