@@ -8,7 +8,10 @@ SAVEHIST=1000
 setopt appendhistory notify
 unsetopt autocd beep extendedglob nomatch
 bindkey -v
-# End of lines configured by zsh-newuser-install
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^E' edit-command-line
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/jumzi/.zshrc'
 
