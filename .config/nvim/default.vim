@@ -41,9 +41,10 @@ set tabstop=2 sw=2 ai
 set spelllang=en,sv
 
 "colorscheme
-set t_Co=256
-set background=dark
-colorscheme hybrid_reverse
+set termguicolors
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'darker'
+colorscheme material
 
 "tags following
 noremap <c-g> <c-]>

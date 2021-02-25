@@ -90,6 +90,8 @@ if dein#load_state(configPath . 'pluginInstalls')
 	call dein#add('LnL7/vim-nix')
 	"ripgrep in vim
 	call dein#add('jremmen/vim-ripgrep')
+	"material-vim
+	call dein#add('kaicataldo/material.vim')
 	
 
 	call dein#end()
