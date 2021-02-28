@@ -8,6 +8,10 @@ SAVEHIST=1000
 setopt appendhistory notify
 unsetopt autocd beep extendedglob nomatch
 bindkey -v
+bindkey -a s vi-forward-char
+bindkey -a t down-history
+bindkey -a n up-history
+
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^E' edit-command-line
