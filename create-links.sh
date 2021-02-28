@@ -10,8 +10,6 @@ ignores=(
   ".gitignore"
   ".nvimrc"
 	"buildspec.yml"
-	"nixos/configuration.nix"
-	"nixos/hardware-configuration.nix"
 )
 
 script_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
@@ -24,14 +22,27 @@ mkdir -p "$backup_root"
 
 dotfiles=$(
   cd "$script_root" || exit
-  git ls-files
+  git ls-files | grep -v nixos
 )
 
 for repo_file in $dotfiles; do
   #Making sure its not an ignored file
-  echo "$repo_file"
   if ! ignored "$repo_file" "${ignores[@]}"; then
+		echo "$repo_file"
     backup "$backup_root" "$host_root" "$repo_file"
     link_dotfile "$script_root" "$host_root" "$repo_file"
+  fi
+done
+
+nixos_files=$(
+  cd "$script_root" || exit
+  git ls-files | grep nixos
+)
+
+nixos_root=/etc/
+for nixos_file in $nixos_files; do
+	if ! ignored "$nixos_file" "${ignores[@]}"; then
+		echo "$nixos_file"
+    link_dotfile "$script_root" "$nixos_root" "$nixos_file"
   fi
 done
