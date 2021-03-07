@@ -69,7 +69,6 @@
 
   };
 
-  programs.dconf.enable = true;
 
   services.printing.enable = true;
 
@@ -146,6 +145,8 @@
     zsh.enable = true;
     steam.enable = true;
     nm-applet.enable = true;
+    dconf.enable = true;
+    gnupg.agent.enable = true;
   };
 
 	fonts = {
@@ -163,10 +164,6 @@
 	};
 
   virtualisation.docker.enable = true;
-
-	programs.gnupg.agent = {
-		enable = true;
-	};
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
