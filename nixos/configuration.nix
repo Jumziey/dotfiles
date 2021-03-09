@@ -136,7 +136,6 @@
     golangci-lint
     golint
     goimports
-    home-manager
   ];
 
 	services.blueman.enable = true;
