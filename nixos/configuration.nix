@@ -136,6 +136,9 @@
     golangci-lint
     golint
     goimports
+    ngrok
+    tmux
+    jq
   ];
 
 	services.blueman.enable = true;
