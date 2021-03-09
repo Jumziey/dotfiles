@@ -89,6 +89,7 @@
 
   environment.systemPackages = with pkgs; [
 		lightdm
+    awscli2
     git
     neovim
     nix-index
