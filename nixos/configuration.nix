@@ -136,6 +136,7 @@
     golangci-lint
     golint
     goimports
+    chromium
     ngrok
     tmux
     jq
