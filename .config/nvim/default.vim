@@ -1,6 +1,9 @@
 "
 " NEOVIM DEFAULT SETTINGS
 "
+"Need to ignore some stuff 
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/node_modules/*
+
 " Mouse works in all modes
 set mouse=a
 
@@ -63,3 +66,4 @@ endfor
 
 command! ProfileStart  :profile start profile.log | profile func * | profile file * 
 command! ProfileStop  :profile stop | qall
+
