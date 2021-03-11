@@ -142,6 +142,8 @@
     ngrok
     tmux
     jq
+    nodePackages.prettier
+    nodePackages.eslint_d
   ];
 
 	services.blueman.enable = true;
