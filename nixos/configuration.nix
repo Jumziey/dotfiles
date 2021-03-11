@@ -144,7 +144,7 @@
     jq
     irssi
     nodePackages.prettier
-    nodePackages.jshint
+    nodePackages.eslint_d
   ];
 
 	services.blueman.enable = true;
