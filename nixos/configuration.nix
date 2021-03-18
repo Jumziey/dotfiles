@@ -145,6 +145,7 @@
     irssi
     nodePackages.prettier
     nodePackages.eslint_d
+    nixpkgs-fmt
   ];
 
   services.blueman.enable = true;
