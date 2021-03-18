@@ -8,7 +8,7 @@
 
   nixpkgs.config.allowUnfree = true;
   imports =
-    [ 
+    [
       ./hardware-configuration.nix
     ];
 
@@ -26,7 +26,7 @@
 
   time.timeZone = "Europe/Stockholm";
 
-  
+
   i18n.defaultLocale = "en_US.UTF-8";
 
   console = {
@@ -41,11 +41,11 @@
     useXkbConfig = true;
   };
 
-  
+
 
   # Configure keymap in X11
   services.xserver = {
-		enable = true;
+    enable = true;
 
     layout = "se";
     xkbVariant = "dvorak_a5";
@@ -54,18 +54,18 @@
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
-        dmenu 
+        dmenu
         i3status
-     ];
-		 	package = pkgs.i3-gaps;
+      ];
+      package = pkgs.i3-gaps;
     };
 
-		displayManager = {
-			defaultSession = "none+i3";
-			lightdm.enable = true;
-			autoLogin.enable = true;
-			autoLogin.user = "jumzi";
-		};
+    displayManager = {
+      defaultSession = "none+i3";
+      lightdm.enable = true;
+      autoLogin.enable = true;
+      autoLogin.user = "jumzi";
+    };
 
   };
 
@@ -77,18 +77,18 @@
 
   users.users.jumzi = {
     isNormalUser = true;
-    extraGroups = 
-			[ 
-				"wheel" 
-				"docker"
-				"networkmanager"
-			]; 
+    extraGroups =
+      [
+        "wheel"
+        "docker"
+        "networkmanager"
+      ];
     shell = pkgs.zsh;
     initialHashedPassword = "test";
   };
 
   environment.systemPackages = with pkgs; [
-		lightdm
+    lightdm
     awscli2
     python38Packages.cfn-lint
     git
@@ -109,26 +109,26 @@
     xclip
     docker
     docker-compose
-		spaceship-prompt
-		file
-		shellcheck
-		bats
-		vim-vint
-		slack
-		discord
-		pavucontrol
-		blueman
-		xbindkeys
-		gnome3.adwaita-icon-theme
-		pass
-		gnupg
-		pinentry
-		pinentry-curses
-		docker-credential-helpers
-		kind
-		kubectl
-		mpv
-		kubernetes-helm 
+    spaceship-prompt
+    file
+    shellcheck
+    bats
+    vim-vint
+    slack
+    discord
+    pavucontrol
+    blueman
+    xbindkeys
+    gnome3.adwaita-icon-theme
+    pass
+    gnupg
+    pinentry
+    pinentry-curses
+    docker-credential-helpers
+    kind
+    kubectl
+    mpv
+    kubernetes-helm
     bitwarden
     discord
     deluge
@@ -147,7 +147,7 @@
     nodePackages.eslint_d
   ];
 
-	services.blueman.enable = true;
+  services.blueman.enable = true;
 
   programs = {
     zsh.enable = true;
@@ -171,19 +171,19 @@
     '';
   };
 
-	fonts = {
-		fonts = with pkgs; [
-			(nerdfonts.override { fonts = [ "Terminus" "Ubuntu" "JetBrainsMono" ]; })
-		];
+  fonts = {
+    fonts = with pkgs; [
+      (nerdfonts.override { fonts = [ "Terminus" "Ubuntu" "JetBrainsMono" ]; })
+    ];
 
-		fontconfig = {
-			defaultFonts = {
-				serif = [ "JetBrainsMono" ];
-				sansSerif = [ "JetBrainsMono" ];
-				monospace = [ "JetBrainsMono" ];
-			};
-		};
-	};
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "JetBrainsMono" ];
+        sansSerif = [ "JetBrainsMono" ];
+        monospace = [ "JetBrainsMono" ];
+      };
+    };
+  };
 
   virtualisation.docker.enable = true;
 
@@ -193,15 +193,14 @@
 
   services.sshd.enable = true;
 
-   nixpkgs.overlays = [
-   (self: super: {
-     neovim = super.neovim.override {
-       viAlias = true;
-       vimAlias = true;
-       withNodeJs = true;
-       withPython = true;
-     };
-   })
- ];
+  nixpkgs.overlays = [
+    (self: super: {
+      neovim = super.neovim.override {
+        viAlias = true;
+        vimAlias = true;
+        withNodeJs = true;
+        withPython = true;
+      };
+    })
+  ];
 }
-
