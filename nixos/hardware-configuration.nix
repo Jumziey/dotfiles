@@ -5,10 +5,11 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-	hardware.bluetooth.enable = true;
+  hardware.bluetooth.enable = true;
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
@@ -16,14 +17,16 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/mapper/crypted";
+    {
+      device = "/dev/mapper/crypted";
       fsType = "ext4";
     };
 
   boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/cbcea096-8ebd-42de-9e6c-4a2448ad30f1";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/604F-9950";
+    {
+      device = "/dev/disk/by-uuid/604F-9950";
       fsType = "vfat";
     };
 
@@ -41,22 +44,22 @@
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;
 
-	services.xserver.libinput = {
-		enable = true;
-		accelProfile = "flat";
-		disableWhileTyping = true;
-		naturalScrolling = true;
-		scrollMethod = "twofinger";
-	};
-	environment.variables.XCURSOR_SIZE = "48";
+  services.xserver.libinput = {
+    enable = true;
+    accelProfile = "flat";
+    disableWhileTyping = true;
+    naturalScrolling = true;
+    scrollMethod = "twofinger";
+  };
+  environment.variables.XCURSOR_SIZE = "48";
 
-	services.xserver.config = ''
-		Section "InputClass"
-			Identifier "DELL097E:00 04F3:311C Touchpad"
-			MatchProduct "DELL097E:00 04F3:311C Touchpad"
-			Option "TransformationMatrix" "2 0 0 0 2 0 0 0 1"
-		EndSection
-	'';
+  services.xserver.config = ''
+    Section "InputClass"
+      Identifier "DELL097E:00 04F3:311C Touchpad"
+      MatchProduct "DELL097E:00 04F3:311C Touchpad"
+      Option "TransformationMatrix" "2 0 0 0 2 0 0 0 1"
+    EndSection
+  '';
 
   services.logind.lidSwitch = "ignore";
 }
