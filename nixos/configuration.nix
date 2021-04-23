@@ -147,6 +147,8 @@
     nodePackages.eslint_d
     nixpkgs-fmt
     python3
+    yamllint
+    gcc
   ];
 
   services.blueman.enable = true;
