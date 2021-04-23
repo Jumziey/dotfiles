@@ -26,3 +26,21 @@ nmap <Leader>vd <Plug>VimwikiDeleteLink
 nmap <Leader>vr <Plug>VimwikiRenameLink
 
 nmap <c-w> <Plug>VimwikiToggleListItem
+
+function! s:wiki_enter()
+    setlocal splitright
+    setlocal nonumber
+    nmap<buffer> <CR> :VimwikiVSplitLink 1 0<cr> | vertical resize 82<cr>
+endfunction
+
+function! s:wiki_leave()
+    nmap<buffer> <CR> <Plug>VimwikiFollowLink
+endfunction
+
+augroup jumziwiki
+	autocmd!
+	autocmd BufEnter index.wiki call <SID>wiki_enter()
+	autocmd BufLeave index.wiki call <SID>wiki_leave()
+augroup END
+
+
