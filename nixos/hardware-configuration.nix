@@ -46,10 +46,12 @@
 
   services.xserver.libinput = {
     enable = true;
-    accelProfile = "flat";
-    disableWhileTyping = true;
-    naturalScrolling = true;
-    scrollMethod = "twofinger";
+    touchpad = {
+      accelProfile = "flat";
+      disableWhileTyping = true;
+      naturalScrolling = true;
+      scrollMethod = "twofinger";
+    };
   };
   environment.variables.XCURSOR_SIZE = "48";
 
