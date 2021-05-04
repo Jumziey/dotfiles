@@ -1,0 +1,87 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p easyrsa openssl expect getopt
+# shellcheck shell=bash
+
+
+options=$(getopt \
+  --options "" \
+  --longoptions help,profile:,region: \
+  -- "$@")
+eval set --"$options"
+
+USER="$1"
+
+usage() {
+  echo ""
+  echo "Usage: $0 [--profile=<AWS PROFILE>]"
+  echo -e "\t--profile to use for uploading creds"
+  echo -e "\t--region to use for uploading creds"
+  exit 1
+}
+
+while true; do
+  case "$1" in
+  --profile)
+    shift
+    PROFILE="$1"
+    ;;
+  --region)
+    shift
+    REGION="$1"
+    ;;
+  --help)
+    usage
+    exit 1
+    ;;
+
+  --)
+    shift
+    break
+    ;;
+  esac
+  shift
+done
+
+if [ -z "${PROFILE}" ] ; then
+	read -rp "User: " USER
+fi
+
+echo "User: $USER"
+
+easyrsa --version
+echo "###### initializing an pki environment..."
+easyrsa init-pki
+echo "###### building ca..."
+expect <<- DONE
+	set timeout -1
+	spawn easyrsa build-ca nopass
+	expect  "*?ommon Name*:"
+	send "$USER\r"
+	expect eof
+DONE
+echo "###### building-server cert..."
+easyrsa build-server-full server nopass
+echo "###### building user cert..."
+easyrsa build-client-full "$USER" nopass
+
+ mkdir ./aws-credentials/
+cp pki/ca.crt ./aws-credentials/
+cp pki/issued/server.crt ./aws-credentials/
+cp pki/private/server.key ./aws-credentials/
+cp pki/issued/"$USER".crt ./aws-credentials
+cp pki/private/"$USER".key ./aws-credentials/
+
+ARGS=""
+if [ -n "$PROFILE" ] ; then
+	ARGS="$ARGS --profile $PROFILE"
+fi
+
+if [ -n "$REGION" ] ; then
+	ARGS="$ARGS --region $REGION"
+fi
+
+
+c1="aws acm $ARGS import-certificate --certificate fileb://aws-credentials/server.crt --private-key fileb://aws-credentials/server.key --certificate-chain fileb://aws-credentials/ca.crt"
+c2="aws acm $ARGS import-certificate --certificate fileb://aws-credentials/${USER}.crt --private-key fileb://aws-credentials/${USER}.key --certificate-chain fileb://aws-credentials/ca.crt"
+eval "$c1"
+eval "$c2"
