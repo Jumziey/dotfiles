@@ -22,6 +22,25 @@
       fsType = "ext4";
     };
 
+  fileSystems."/mnt/plot-space" =
+    {
+      device = "/dev/disk/by-uuid/dede8ec0-0e53-40bb-9f0c-9f0c77357959";
+      fsType = "ext4";
+    };
+
+  fileSystems."/mnt/farm-space" =
+    {
+      device = "//192.168.1.7/Farm-Space";
+      fsType = "cifs";
+      options =
+        let
+          # this line prevents hanging on network split
+          automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,uid=1000";
+        in
+        [ "${automount_opts},credentials=/etc/nixos/smb-secrets" ];
+    };
+
+
   boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/cbcea096-8ebd-42de-9e6c-4a2448ad30f1";
 
   fileSystems."/boot" =
