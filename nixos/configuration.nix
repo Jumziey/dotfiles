@@ -149,7 +149,13 @@
     python3
     yamllint
     gcc
+    prometheus-node-exporter
   ];
+  services.prometheus.exporters.node = {
+    port = 9100;
+    enable = true;
+    openFirewall = true;
+  };
 
   services.blueman.enable = true;
 
