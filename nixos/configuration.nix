@@ -71,6 +71,15 @@
 
 
   services.printing.enable = true;
+  services.printing.drivers = with pkgs; [
+    gutenprint
+    gutenprintBin
+    samsungUnifiedLinuxDriver
+    splix
+    brlaser
+    brgenml1lpr
+    brgenml1cupswrapper
+  ];
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
