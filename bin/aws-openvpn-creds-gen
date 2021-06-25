@@ -5,17 +5,16 @@
 
 options=$(getopt \
   --options "" \
-  --longoptions help,profile:,region: \
+  --longoptions help,profile:,region:,user: \
   -- "$@")
 eval set --"$options"
-
-USER="$1"
 
 usage() {
   echo ""
   echo "Usage: $0 [--profile=<AWS PROFILE>]"
   echo -e "\t--profile to use for uploading creds"
   echo -e "\t--region to use for uploading creds"
+  echo -e "\t--user username to use for the creds"
   exit 1
 }
 
@@ -29,6 +28,11 @@ while true; do
     shift
     REGION="$1"
     ;;
+	--user)
+    shift
+    USER="$1"
+    ;;
+
   --help)
     usage
     exit 1
@@ -42,11 +46,9 @@ while true; do
   shift
 done
 
-if [ -z "${PROFILE}" ] ; then
+if [ -z "${USER}" ] ; then
 	read -rp "User: " USER
 fi
-
-echo "User: $USER"
 
 easyrsa --version
 echo "###### initializing an pki environment..."
@@ -81,7 +83,7 @@ if [ -n "$REGION" ] ; then
 fi
 
 
-c1="aws acm $ARGS import-certificate --certificate fileb://aws-credentials/server.crt --private-key fileb://aws-credentials/server.key --certificate-chain fileb://aws-credentials/ca.crt"
-c2="aws acm $ARGS import-certificate --certificate fileb://aws-credentials/${USER}.crt --private-key fileb://aws-credentials/${USER}.key --certificate-chain fileb://aws-credentials/ca.crt"
+c1="aws acm $ARGS import-certificate --certificate fileb://aws-credentials/server.crt --private-key fileb://aws-credentials/server.key --certificate-chain fileb://aws-credentials/ca.crt --tags Key=Name,Value=$USER-server-key"
+c2="aws acm $ARGS import-certificate --certificate fileb://aws-credentials/${USER}.crt --private-key fileb://aws-credentials/${USER}.key --certificate-chain fileb://aws-credentials/ca.crt --tags Key=Name,Value=$USER-user-key"
 eval "$c1"
 eval "$c2"
