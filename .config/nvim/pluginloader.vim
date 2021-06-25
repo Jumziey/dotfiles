@@ -84,8 +84,6 @@ if dein#load_state(configPath . 'pluginInstalls')
  	call dein#add('aklt/plantuml-syntax')
 	"A global test plugin!
 	call dein#add('vim-test/vim-test')
-	"Pair programming
-	call dein#add('floobits/floobits-neovim')
 	"vim-nix
 	call dein#add('LnL7/vim-nix')
 	"ripgrep in vim
