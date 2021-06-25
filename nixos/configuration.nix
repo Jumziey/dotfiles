@@ -150,6 +150,10 @@
     yamllint
     gcc
     prometheus-node-exporter
+    tree
+    rclone
+    graphviz
+    texlive.combined.scheme-full
   ];
   services.prometheus.exporters.node = {
     port = 9100;
