@@ -30,6 +30,13 @@ alias ls='ls --color=auto'
 alias rg='rg -p'
 alias less='less -r'
 
+dockerfile_run() {
+	ID=$(docker build . | tee $(tty) | grep "Successfully built" | sed 's/Successfully built //g') 
+	[[ -v ID ]] || return
+	CMD="docker run -it $ID $1"
+	eval $CMD
+}
+
 tsconv() {
     date -d "@$1"
 }
