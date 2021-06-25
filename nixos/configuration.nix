@@ -203,7 +203,6 @@
         viAlias = true;
         vimAlias = true;
         withNodeJs = true;
-        withPython = true;
       };
     })
     (self: super: {
