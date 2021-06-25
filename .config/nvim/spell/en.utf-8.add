@@ -114,3 +114,6 @@ Counterintuitively
 EnableCloudwatchLogs
 Cloudwatch
 Keycloak
+Repo
+entrypoint
+dockerfile
