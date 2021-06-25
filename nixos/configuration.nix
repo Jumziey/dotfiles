@@ -96,12 +96,15 @@
     initialHashedPassword = "test";
   };
 
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
   environment.systemPackages = with pkgs; [
     lightdm
     awscli2
     python38Packages.cfn-lint
     git
-    neovim
     nix-index
     dhcpcd
     bash
@@ -163,6 +166,7 @@
     rclone
     graphviz
     texlive.combined.scheme-full
+    neovim
   ];
   services.prometheus.exporters.node = {
     port = 9100;
