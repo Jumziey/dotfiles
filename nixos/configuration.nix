@@ -208,10 +208,10 @@
     })
     (self: super: {
       discord = super.discord.override rec {
-        version = "0.0.14";
+        version = "0.0.15";
         src = super.fetchurl {
           url = "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz";
-          sha256 = "1rq490fdl5pinhxk8lkfcfmfq7apj79jzf3m14yql1rc9gpilrf2";
+          sha256 = "adede954e9c696d96e254759b539527a24ab1d42f0d548c5c4309d1a3fc3c25e";
         };
       };
     })
