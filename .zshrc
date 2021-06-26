@@ -29,6 +29,7 @@ prompt spaceship
 alias ls='ls --color=auto'
 alias rg='rg -p'
 alias less='less -r'
+alias getfont="fc-list | cut -d ':' -f  2 | sort | fzf | xargs | tee >(xclip -selection primary&) >(xclip -selection clipboard&)"
 
 dockerfile_run() {
 	ID=$(docker build . | tee $(tty) | grep "Successfully built" | sed 's/Successfully built //g') 
