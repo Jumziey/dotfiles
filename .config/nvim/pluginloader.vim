@@ -20,7 +20,7 @@ if dein#load_state(configPath . 'pluginInstalls')
 	"Status bar
 	call dein#add('vim-airline/vim-airline')
 	"Jump in files, azm
-	call dein#add('easymotion/vim-easymotion')
+	call dein#add('phaazon/hop.nvim')
 	"Shows changes in the gutter
 	call dein#add('airblade/vim-gitgutter')
 	"Git integration vim
