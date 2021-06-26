@@ -105,7 +105,7 @@
     dhcpcd
     bash
     parallel
-    kitty
+    alacritty
     firefox
     feh
     htop
