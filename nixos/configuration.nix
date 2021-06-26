@@ -163,6 +163,7 @@
     graphviz
     texlive.combined.scheme-full
     neovim
+    fzf
   ];
   services.prometheus.exporters.node = {
     port = 9100;
