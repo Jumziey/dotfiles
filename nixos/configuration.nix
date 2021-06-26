@@ -96,10 +96,6 @@
     initialHashedPassword = "test";
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
   environment.systemPackages = with pkgs; [
     lightdm
     awscli2
@@ -220,7 +216,18 @@
 
   services.sshd.enable = true;
 
+
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-nightly;
+    defaultEditor = true;
+  };
+
   nixpkgs.overlays = [
+    #neovim-nightly
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
     (self: super: {
       neovim = super.neovim.override {
         viAlias = true;
