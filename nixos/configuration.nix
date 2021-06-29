@@ -10,6 +10,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./nvim/default.nix
     ];
 
 
@@ -98,7 +99,7 @@
 
   environment.systemPackages = with pkgs; [
     lightdm
-    awscli2
+    # awscli2
     python38Packages.cfn-lint
     git
     nix-index
@@ -162,8 +163,8 @@
     rclone
     graphviz
     texlive.combined.scheme-full
-    neovim
     fzf
+    nix-prefetch-git
   ];
   services.prometheus.exporters.node = {
     port = 9100;
@@ -217,26 +218,7 @@
 
   services.sshd.enable = true;
 
-
-  programs.neovim = {
-    enable = true;
-    package = pkgs.neovim-nightly;
-    defaultEditor = true;
-  };
-
   nixpkgs.overlays = [
-    #neovim-nightly
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-    (self: super: {
-      neovim = super.neovim.override {
-        viAlias = true;
-        vimAlias = true;
-        withNodeJs = true;
-        withPython3 = true;
-      };
-    })
     (self: super: {
       discord = super.discord.override rec {
         version = "0.0.15";
