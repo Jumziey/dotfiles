@@ -60,3 +60,6 @@ set spelllang=en,sv
 command! ProfileStart  :profile start profile.log | profile func * | profile file * 
 command! ProfileStop  :profile stop | qall
 
+"Load local init.vim
+set exrc
+set secure 
