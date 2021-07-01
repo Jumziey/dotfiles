@@ -245,8 +245,11 @@ in
             opt = [ ];
           };
           customRC = builtins.concatStringsSep "\n" [
+            # Global
             (lib.strings.fileContents ./default.vim)
             (lib.strings.fileContents ./theme.vim)
+
+            # Plugins
             (lib.strings.fileContents ./plugins/airline.vim)
             (lib.strings.fileContents ./plugins/coc.vim)
             (lib.strings.fileContents ./plugins/gitgutter.vim)
@@ -258,7 +261,6 @@ in
             (lib.strings.fileContents ./plugins/vimwiki.vim)
             (lib.strings.fileContents ./plugins/vim-test.vim)
             (lib.strings.fileContents ./plugins/spelunker.vim)
-
           ];
         };
       };
