@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   hop = pkgs.vimUtils.buildVimPlugin {
     name = "hop.nvim";
@@ -244,6 +244,10 @@ in
             ];
             opt = [ ];
           };
+          customRC = builtins.concatStringsSep "\n" [
+            (lib.strings.fileContents ./default.vim)
+            (lib.strings.fileContents ./theme.vim)
+          ];
         };
       };
     })
