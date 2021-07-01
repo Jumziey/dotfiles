@@ -247,6 +247,9 @@ in
           customRC = builtins.concatStringsSep "\n" [
             (lib.strings.fileContents ./default.vim)
             (lib.strings.fileContents ./theme.vim)
+            (lib.strings.fileContents ./plugins/airline.vim)
+            (lib.strings.fileContents ./plugins/gitgutter.vim)
+            (lib.strings.fileContents ./plugins/hop.vim)
           ];
         };
       };
