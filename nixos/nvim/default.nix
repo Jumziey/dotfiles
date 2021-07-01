@@ -248,8 +248,17 @@ in
             (lib.strings.fileContents ./default.vim)
             (lib.strings.fileContents ./theme.vim)
             (lib.strings.fileContents ./plugins/airline.vim)
+            (lib.strings.fileContents ./plugins/coc.vim)
             (lib.strings.fileContents ./plugins/gitgutter.vim)
             (lib.strings.fileContents ./plugins/hop.vim)
+            (lib.strings.fileContents ./plugins/netrw.vim)
+            (lib.strings.fileContents ./plugins/vimtex.vim)
+            (lib.strings.fileContents ./plugins/neomake.vim)
+            (lib.strings.fileContents ./plugins/neoformat.vim)
+            (lib.strings.fileContents ./plugins/vimwiki.vim)
+            (lib.strings.fileContents ./plugins/vim-test.vim)
+            (lib.strings.fileContents ./plugins/spelunker.vim)
+
           ];
         };
       };
