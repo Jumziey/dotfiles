@@ -141,11 +141,11 @@ in
 
               # go langauge support
               vim-go
-              coc-go
+              # coc-go
 
               #Latex integration
               vimtex
-              coc-vimtex
+              # coc-vimtex
 
               # Theme
               vim-hybrid-material
