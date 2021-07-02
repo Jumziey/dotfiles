@@ -249,6 +249,9 @@ in
             (lib.strings.fileContents ./default.vim)
             (lib.strings.fileContents ./theme.vim)
 
+            # file type detection
+            (lib.strings.fileContents ./ftdetect.vim)
+
             # Plugins
             (lib.strings.fileContents ./plugins/airline.vim)
             (lib.strings.fileContents ./plugins/coc.vim)
