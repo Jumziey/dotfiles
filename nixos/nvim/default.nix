@@ -88,9 +88,9 @@ let
     '';
   };
 
-  local-ftplugins = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "local-ftplugins";
-    src = ./local-ftplugins;
+  local-plugin = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "local-plugin";
+    src = ./local-plugin;
   };
 
 in
@@ -200,7 +200,8 @@ in
               # lint etc.
               neomake-jumziey-vim
 
-              local-ftplugins
+              # Used for after/ftplugin spell and syntax
+              local-plugin
 
               # coc-clangd
               # coc-clap
