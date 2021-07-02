@@ -88,6 +88,11 @@ let
     '';
   };
 
+  local-ftplugins = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "local-ftplugins";
+    src = ./local-ftplugins;
+  };
+
 in
 {
   environment.systemPackages = with pkgs;
@@ -194,6 +199,8 @@ in
 
               # lint etc.
               neomake-jumziey-vim
+
+              local-ftplugins
 
               # coc-clangd
               # coc-clap
