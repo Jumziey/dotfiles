@@ -1,3 +1,8 @@
+if exists('b:did_after_ftplugin')
+	finish
+endif
+let b:did_after_ftplugin = 1
+
 "Faith related commands mostly
 set autowrite
 let g:go_statusline_duration = 1

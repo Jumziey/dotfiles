@@ -1,3 +1,9 @@
+if exists('b:did_after_ftplugin')
+	finish
+endif
+let b:did_after_ftplugin = 1
+
+
 call neomake#configure#automake('rw')
 let g:neomake_python_enabled_makers = [ 'pylint', 'mypy' ]
 
@@ -19,5 +25,5 @@ augroup python
 augroup END
 
 "Running script
-nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+map <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 

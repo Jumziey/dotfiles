@@ -1,3 +1,8 @@
+if exists('b:did_after_ftplugin')
+	finish
+endif
+let b:did_after_ftplugin = 1
+
 " ----- neovimhaskell/haskell-vim -----
 "2 spaces for tab 
 set ts=2 sw=2 ai
