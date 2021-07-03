@@ -1,6 +1,6 @@
-map <Leader>w  :HopWord<cr>
-map <Leader>t  :HopLine<cr>
-map <Leader>n  :HopChar2<cr>
+noremap <silent> <Leader>w  :HopWord<cr>
+noremap <silent> <Leader>t  :HopLine<cr>
+noremap <silent> <Leader>n  :HopChar2<cr>
 
 
 highlight HopNextKey ctermfg=10  
