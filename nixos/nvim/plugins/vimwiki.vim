@@ -4,6 +4,8 @@ let jumzi_wiki.path = '~/.vimwiki/'
 let g:vimwiki_list = [jumzi_wiki]
 
 
+let g:vimwiki_key_mappings = { 'all_maps': 0, }
+
 nmap <Leader>dn <Plug>VimwikiMakeDiaryNote
 nmap <Leader>d<Leader>t <Plug>VimwikiTabMakeDiaryNote
 nmap <Leader>dy <Plug>VimwikiMakeYesterdayDiaryNote
