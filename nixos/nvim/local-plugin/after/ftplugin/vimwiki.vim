@@ -4,6 +4,6 @@ nmap <buffer> <CR> <Plug>VimwikiFollowLink
 vmap <buffer> <CR> <Plug>VimwikiNormalizeLinkVisual
 
 nmap <buffer> <c-w> <Plug>VimwikiToggleListItem
-nmap <buffer> <Leader>wd <Plug>VimwikiDeleteFile
-nmap <buffer> <Leader>wn <Plug>VimwikiGoto
-nmap <buffer> <Leader>wr <Plug>VimwikiRenameFile
+nmap <buffer> <Leader>pd <Plug>VimwikiDeleteFile
+nmap <buffer> <Leader>pn <Plug>VimwikiGoto
+nmap <buffer> <Leader>pr <Plug>VimwikiRenameFile
