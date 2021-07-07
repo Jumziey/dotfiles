@@ -98,6 +98,8 @@ in
   environment.systemPackages = with pkgs;
     [
       neovim
+      pyright
+      sumneko-lua-language-server
     ];
 
   programs.neovim = {
@@ -203,6 +205,7 @@ in
               # Used for after/ftplugin spell and syntax
               local-plugin
 
+              nvim-lspconfig
               # coc-clangd
               # coc-clap
               # coc-cmake
@@ -273,6 +276,11 @@ in
             (lib.strings.fileContents ./plugins/vim-test.vim)
             (lib.strings.fileContents ./plugins/spelunker.vim)
             (lib.strings.fileContents ./plugins/fzf.vim)
+            ''
+              lua << EOF
+              ${lib.strings.fileContents ./plugins/lspconfig.lua}
+              EOF
+            ''
           ];
         };
       };
