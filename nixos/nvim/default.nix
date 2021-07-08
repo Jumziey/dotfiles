@@ -142,11 +142,9 @@ in
 
               # go langauge support
               vim-go
-              # coc-go
 
               #Latex integration
               vimtex
-              # coc-vimtex
 
               # Theme
               vim-hybrid-material
@@ -168,7 +166,6 @@ in
               vimwiki
 
               #vimscript
-              coc-vimlsp
 
               # vimscript testing
               vader-vim
@@ -204,56 +201,8 @@ in
               # Used for after/ftplugin spell and syntax
               local-plugin
 
-              coc-nvim
 
               nvim-lspconfig
-
-              # coc-clangd
-              # coc-clap
-              # coc-cmake
-              # coc-css
-              # coc-denite
-              # coc-diagnostic
-              # coc-emmet
-              # coc-eslint
-              # coc-explorer
-              # coc-fzf
-              # coc-git
-              # coc-highlight
-              # coc-html
-              # coc-imselect
-              # coc-java
-              # coc-jest
-              # coc-json
-              # coc-lists
-              # coc-lua
-              # coc-markdownlint
-              # coc-metals
-              # coc-neco
-              # coc-nvim
-              # coc-pairs
-              # coc-prettier
-              # coc-pyright
-              # coc-python
-              # coc-r-lsp
-              # coc-rls
-              # coc-rust-analyzer
-              # coc-smartf
-              # coc-snippets
-              # coc-solargraph
-              # coc-spell-checker
-              # coc-stylelint
-              # coc-tabnine
-              # coc-texlab
-              # coc-tslint
-              # coc-tslint-plugin
-              # coc-tsserver
-              # coc-vetur
-              # coc-vimtex
-              # coc-wxml
-              # coc-yaml
-              # coc-yank
-              # vim-lightline-coc
             ];
             opt = [ ];
           };
@@ -267,7 +216,6 @@ in
 
             # Plugins
             (lib.strings.fileContents ./plugins/airline.vim)
-            #(lib.strings.fileContents ./plugins/coc.vim)
             (lib.strings.fileContents ./plugins/gitgutter.vim)
             (lib.strings.fileContents ./plugins/hop.vim)
             (lib.strings.fileContents ./plugins/netrw.vim)
