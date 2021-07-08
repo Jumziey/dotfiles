@@ -205,7 +205,6 @@ in
               # Used for after/ftplugin spell and syntax
               local-plugin
 
-              nvim-lspconfig
               # coc-clangd
               # coc-clap
               # coc-cmake
@@ -265,7 +264,7 @@ in
 
             # Plugins
             (lib.strings.fileContents ./plugins/airline.vim)
-            (lib.strings.fileContents ./plugins/coc.vim)
+            #(lib.strings.fileContents ./plugins/coc.vim)
             (lib.strings.fileContents ./plugins/gitgutter.vim)
             (lib.strings.fileContents ./plugins/hop.vim)
             (lib.strings.fileContents ./plugins/netrw.vim)
@@ -276,11 +275,6 @@ in
             (lib.strings.fileContents ./plugins/vim-test.vim)
             (lib.strings.fileContents ./plugins/spelunker.vim)
             (lib.strings.fileContents ./plugins/fzf.vim)
-            ''
-              lua << EOF
-              ${lib.strings.fileContents ./plugins/lspconfig.lua}
-              EOF
-            ''
           ];
         };
       };
