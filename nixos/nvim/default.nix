@@ -205,6 +205,8 @@ in
               # Used for after/ftplugin spell and syntax
               local-plugin
 
+              coc-nvim
+
               # coc-clangd
               # coc-clap
               # coc-cmake
@@ -248,7 +250,7 @@ in
               # coc-vetur
               # coc-vimtex
               # coc-wxml
-              # coc-yaml
+              coc-yaml
               # coc-yank
               # vim-lightline-coc
             ];
