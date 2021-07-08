@@ -98,7 +98,6 @@ in
   environment.systemPackages = with pkgs;
     [
       neovim
-      pyright
       sumneko-lua-language-server
     ];
 
@@ -207,6 +206,8 @@ in
 
               coc-nvim
 
+              nvim-lspconfig
+
               # coc-clangd
               # coc-clap
               # coc-cmake
@@ -250,7 +251,7 @@ in
               # coc-vetur
               # coc-vimtex
               # coc-wxml
-              coc-yaml
+              # coc-yaml
               # coc-yank
               # vim-lightline-coc
             ];
@@ -277,6 +278,12 @@ in
             (lib.strings.fileContents ./plugins/vim-test.vim)
             (lib.strings.fileContents ./plugins/spelunker.vim)
             (lib.strings.fileContents ./plugins/fzf.vim)
+
+            ''
+              lua << EOF
+              ${lib.strings.fileContents ./plugins/lspconfig.lua}
+              EOF
+            ''
           ];
         };
       };
