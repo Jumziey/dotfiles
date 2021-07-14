@@ -1,0 +1,8 @@
+[bspace]>[enter]
+[delete]>[lalt]
+[lctrl]>[bspace]
+
+[rctrl]>[lctrl]
+[lalt]>[delete]
+[enter]>[ralt]
+

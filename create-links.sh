@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 ignores=(
+	"qwerty.txt"
   "dev-bin/nvim-config-lint"
   "win-nvim-links.ps1"
   "create-links.sh"
