@@ -226,6 +226,7 @@ in
             (lib.strings.fileContents ./plugins/vim-test.vim)
             (lib.strings.fileContents ./plugins/spelunker.vim)
             (lib.strings.fileContents ./plugins/fzf.vim)
+            (lib.strings.fileContents ./plugins/vim-go.vim)
 
             ''
               lua << EOF

@@ -15,11 +15,8 @@ map <F12> :GoAlternate<CR>
 "Tag following for go
 "let g:go_def_mapping_enabled = 0
 "must be set in default.vim
-noremap <silent> gd :GoDef<CR>
+noremap <silent> <c-g> :GoDef<CR>
 "noremap <C-o> :GoDefPop<CR>
-
-noremap <c-t> <Nop>
-noremap <c-t> <C-W>j
 
 
 "Seem to have some issue with guru
