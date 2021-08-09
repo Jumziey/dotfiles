@@ -165,6 +165,7 @@
     texlive.combined.scheme-full
     fzf
     nix-prefetch-git
+    awscli2
   ];
   services.prometheus.exporters.node = {
     port = 9100;
