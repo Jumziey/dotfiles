@@ -54,7 +54,7 @@ let
   };
 
   vim-godot = pkgs.vimUtils.buildVimPlugin {
-    name = "graphviz.vim";
+    name = "vim-godot";
     src = pkgs.fetchFromGitHub {
       owner = "habamax";
       repo = "vim-godot";
@@ -65,7 +65,7 @@ let
 
   spelunker-vim = pkgs.vimUtils.buildVimPlugin
     {
-      name = "graphviz.vim";
+      name = "spelunker.vim";
       src = pkgs.fetchFromGitHub {
         owner = "kamykn";
         repo = "spelunker.vim";
@@ -73,6 +73,21 @@ let
         sha256 = "0c9r75abf7blzmadpnz79m3clr62xyxh1ifyirhv5yirlpc0slzz";
       };
     };
+
+  nvim-cmp-local = pkgs.vimUtils.buildVimPlugin
+    {
+      name = "nvim-cmp";
+      src = pkgs.fetchFromGitHub {
+        owner = "hrsh7th";
+        repo = "nvim-cmp";
+        rev = "24406f995ea20abba816c0356ebff1a025c18a72";
+        sha256 = "142r41483xx7yw1gr4g1xi3rvzlprqwc72bq8rky0ys6mq50d7ic";
+      };
+      configurePhase = ''
+        rm Makefile
+      '';
+    };
+
 
   # TODO: add linters
   neomake-jumziey-vim = pkgs.vimUtils.buildVimPlugin {
@@ -99,6 +114,7 @@ in
     [
       neovim
       sumneko-lua-language-server
+      yaml-language-server
     ];
 
   programs.neovim = {
@@ -203,6 +219,8 @@ in
 
 
               nvim-lspconfig
+              # nvim-cmp # Autocompletion
+              nvim-cmp-local
             ];
             opt = [ ];
           };
@@ -231,6 +249,8 @@ in
             ''
               lua << EOF
               ${lib.strings.fileContents ./plugins/lspconfig.lua}
+
+              ${lib.strings.fileContents ./plugins/cmp.lua}
               EOF
             ''
           ];
