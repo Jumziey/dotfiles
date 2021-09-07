@@ -87,6 +87,17 @@ let
         rm Makefile
       '';
     };
+  cmp-nvim-lsp-local = pkgs.vimUtils.buildVimPlugin
+    {
+      name = "cmp-nvim-lsp";
+      src = pkgs.fetchFromGitHub {
+        owner = "hrsh7th";
+        repo = "cmp-nvim-lsp";
+        rev = "f6f471898bc4b45eacd36eef9887847b73130e0e";
+        sha256 = "1asr32w5q618pqggq9jwrbqs4kjp3ssbw5pca5wc7j2496vm2lhg";
+      };
+    };
+
 
 
   # TODO: add linters
@@ -211,9 +222,6 @@ in
               # spelling
               spelunker-vim
 
-              # lint etc.
-              neomake-jumziey-vim
-
               # Used for after/ftplugin spell and syntax
               local-plugin
 
@@ -221,6 +229,7 @@ in
               nvim-lspconfig
               # nvim-cmp # Autocompletion
               nvim-cmp-local
+              cmp-nvim-lsp-local
             ];
             opt = [ ];
           };
