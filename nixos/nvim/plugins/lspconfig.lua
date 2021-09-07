@@ -47,7 +47,7 @@ lua_lsp.sumneko_lua.setup {
 }
 
 
-local yaml_lsp = require("lspconfig")
+local cfn_lsp = require("lspconfig")
 
 local cfn_schema = vim.empty_dict()
 -- cfn_schema["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] = "*.yaml"
@@ -57,7 +57,7 @@ local cfn_schema = vim.empty_dict()
 cfn_schema["https://d3teyb21fexa9r.cloudfront.net/latest/gzip/CloudFormationResourceSpecification.json"] = "*.yaml" -- eu-west-1
 
 
-yaml_lsp.yamlls.setup{
+cfn_lsp.yamlls.setup{
 	on_attach = on_attach,
 	filetypes = { "cfn" },
 	settings = {
@@ -121,6 +121,7 @@ yaml_lsp.yamlls.setup{
 			format = {
 				enable = true,
 			},
+			hover = true,
 		},
 	},
 }
