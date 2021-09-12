@@ -9,6 +9,6 @@ cmp.setup {
   },
   sources = {
 		-- Dependendent on lspconfig.lua
-    { name = 'yaml_lsp' },
+    { name = 'nvim_lsp' },
   },
 }
