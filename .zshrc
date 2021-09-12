@@ -166,3 +166,6 @@ fi
 #Chrome Headless variable (for runnig ng tests)
 export CHROME_BIN="/usr/bin/chromium"
 
+json_escape () {
+		python -c 'import json,sys;t=sys.stdin.read();print(json.dumps(t));' < $1 
+}
