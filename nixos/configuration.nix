@@ -67,7 +67,6 @@
       autoLogin.enable = true;
       autoLogin.user = "jumzi";
     };
-
   };
 
 
@@ -166,6 +165,7 @@
     fzf
     nix-prefetch-git
     awscli2
+    jdt-language-server
   ];
   services.prometheus.exporters.node = {
     port = 9100;
@@ -228,6 +228,9 @@
           sha256 = "adede954e9c696d96e254759b539527a24ab1d42f0d548c5c4309d1a3fc3c25e";
         };
       };
+    })
+    (self: super: {
+      jdt-language-server = pkgs.callPackage ./extra-pkgs/jdt-language-server.nix { };
     })
   ];
 }
