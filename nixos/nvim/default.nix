@@ -1,15 +1,5 @@
 { config, pkgs, lib, ... }:
 let
-  hop = pkgs.vimUtils.buildVimPlugin {
-    name = "hop.nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "phaazon";
-      repo = "hop.nvim";
-      rev = "a6cd8df18dc2f667e2d10b5fea79d73a7d084cd7";
-      sha256 = "1j5l012vxrcqs5x4ry8cfpvz3a289xsr6h969avd4b8ic8w7dkwb";
-    };
-  };
-
   material-vim = pkgs.vimUtils.buildVimPlugin {
     name = "material.vim";
     src = pkgs.fetchFromGitHub {
@@ -160,7 +150,7 @@ in
               vim-airline-themes
 
               # jump in text easily, easymotion style
-              hop
+              hop-nvim
 
               # Gives git status per line
               gitgutter
