@@ -135,6 +135,9 @@ in
   };
 
   nixpkgs.overlays = [
+    (self: super: {
+      jdt-language-server = pkgs.callPackage ./custom-pkgs/jdt-language-server.nix { };
+    })
     #neovim-nightly
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
@@ -230,6 +233,10 @@ in
               # nvim-cmp # Autocompletion
               nvim-cmp-local
               cmp-nvim-lsp-local
+
+              neomake-jumziey-vim
+
+              nvim-treesitter
             ];
             opt = [ ];
           };
