@@ -229,8 +229,5 @@
         };
       };
     })
-    (self: super: {
-      jdt-language-server = pkgs.callPackage ./extra-pkgs/jdt-language-server.nix { };
-    })
   ];
 }

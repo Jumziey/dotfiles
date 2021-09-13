@@ -126,6 +126,7 @@ in
       neovim
       sumneko-lua-language-server
       yaml-language-server
+      jdt-language-server
     ];
 
   programs.neovim = {
@@ -237,6 +238,8 @@ in
               neomake-jumziey-vim
 
               nvim-treesitter
+
+              nvim-jdtls
             ];
             opt = [ ];
           };
