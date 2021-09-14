@@ -230,6 +230,8 @@ in
               nvim-treesitter
 
               nvim-jdtls
+
+              dashboard-nvim
             ];
             opt = [ ];
           };
@@ -254,11 +256,10 @@ in
             (lib.strings.fileContents ./plugins/spelunker.vim)
             (lib.strings.fileContents ./plugins/fzf.vim)
             (lib.strings.fileContents ./plugins/vim-go.vim)
-
+            (lib.strings.fileContents ./plugins/dashboard.vim)
             ''
               lua << EOF
               ${lib.strings.fileContents ./plugins/lspconfig.lua}
-
               ${lib.strings.fileContents ./plugins/cmp.lua}
               EOF
             ''

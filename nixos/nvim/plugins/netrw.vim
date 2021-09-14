@@ -13,8 +13,3 @@ endfunction
 
 "autostart netrw in empty buffer
 filetype plugin indent on
-
-augroup VimStartup
-	au!
-	au VimEnter * if expand("%") == "" | e . | endif
-augroup END
