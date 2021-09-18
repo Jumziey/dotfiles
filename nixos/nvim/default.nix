@@ -117,6 +117,7 @@ in
       sumneko-lua-language-server
       yaml-language-server
       jdt-language-server
+      gopls
     ];
 
   programs.neovim = {

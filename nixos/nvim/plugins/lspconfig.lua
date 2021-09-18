@@ -45,3 +45,7 @@ lua_lsp.sumneko_lua.setup {
     },
   },
 }
+
+
+local go_lsp = require("lspconfig")
+go_lsp.gopls.setup{}
