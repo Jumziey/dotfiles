@@ -222,10 +222,10 @@
   nixpkgs.overlays = [
     (self: super: {
       discord = super.discord.override rec {
-        version = "0.0.15";
+        version = "0.0.16";
         src = super.fetchurl {
           url = "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz";
-          sha256 = "adede954e9c696d96e254759b539527a24ab1d42f0d548c5c4309d1a3fc3c25e";
+          sha256 = "1s9qym58cjm8m8kg3zywvwai2i3adiq6sdayygk2zv72ry74ldai";
         };
       };
     })
