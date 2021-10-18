@@ -166,6 +166,7 @@
     nix-prefetch-git
     awscli2
     jdt-language-server
+    yarn
   ];
   services.prometheus.exporters.node = {
     port = 9100;
