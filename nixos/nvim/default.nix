@@ -260,7 +260,6 @@ in
             ''
               lua << EOF
               ${lib.strings.fileContents ./plugins/lspconfig.lua}
-              ${lib.strings.fileContents ./plugins/jdtls.lua}
               ${lib.strings.fileContents ./plugins/cmp.lua}
               ${lib.strings.fileContents ./plugins/dashboard.lua}
               EOF

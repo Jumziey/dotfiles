@@ -3,10 +3,15 @@ if exists('b:did_after_ftplugin')
 endif
 let b:did_after_ftplugin = 1
 
-call neomake#configure#automake('rw')
 
-augroup java
-  autocmd!
-	" Auto Formatting
-  autocmd BufWritePre * silent! undojoin | Neoformat
-augroup END
+lua << EOF
+local config = {
+  -- The command that starts the language server
+  cmd = {
+    'jdt-language-server',
+    '-Dosgi.bundles.defaultStartLevel=4',
+    -- ADD REMAINING OPTIONS FROM https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line !
+  },
+}
+require('jdtls').start_or_attach(config)
+EOF
