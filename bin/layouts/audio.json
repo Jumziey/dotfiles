@@ -1,0 +1,20 @@
+{
+  "percent": 0.5,
+  "swallows": [
+    {
+      "class": "^\\.blueman\\-manager\\-wrapped$",
+      "instance": "^\\.blueman\\-manager\\-wrapped$"
+    }
+  ],
+  "type": "con"
+}
+{
+  "percent": 0.5,
+  "swallows": [
+    {
+      "class": "^Pavucontrol$",
+      "instance": "^pavucontrol$"
+    }
+  ],
+  "type": "con"
+}

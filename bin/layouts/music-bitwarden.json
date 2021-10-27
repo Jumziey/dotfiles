@@ -1,0 +1,22 @@
+{
+  "percent": 0.5,
+  "swallows": [
+    {
+      "class": "^Firefox$",
+      "instance": "^Navigator$",
+      "title": "^YouTube\\ Music"
+    }
+  ],
+  "type": "con"
+}
+{
+  "name": "Bitwarden",
+  "percent": 0.5,
+  "swallows": [
+    {
+      "class": "^Bitwarden$",
+      "instance": "^bitwarden$"
+    }
+  ],
+  "type": "con"
+}
