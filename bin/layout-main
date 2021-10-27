@@ -8,12 +8,11 @@ i3-msg 'workspace 6; exec firefox --new-window https://www.gmail.com'
 sleep 1
 
 
-i3-msg "workspace 4; append_layout $SCRIPT_ROOT/layouts/calendar-bitwarden.json"
-i3-msg 'workspace 4; exec bitwarden'
+i3-msg "workspace 4; append_layout $SCRIPT_ROOT/layouts/calendar.json"
 i3-msg 'workspace 4; exec chromium calendar.google.com'
 
 i3-msg "workspace 2; append_layout $SCRIPT_ROOT/layouts/support.json"
-i3-msg 'workspace 2; exec firefox --new-window https://www.gitlab.com'
+i3-msg 'workspace 2; exec firefox --new-window https://gitlab.com/codmill/accurate-player/accurate-video-infrastructure/-/merge_requests'
 
 i3-msg "workspace 1"
 
