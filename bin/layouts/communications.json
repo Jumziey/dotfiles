@@ -1,0 +1,41 @@
+{
+  "border": "normal",
+  "floating": "auto_off",
+  "layout": "stacked",
+  "marks": [],
+  "percent": 0.6,
+  "type": "con",
+  "nodes": [
+    {
+      "percent": 0.5,
+      "type": "con",
+      "swallows": [
+        {
+          "class": "^discord$",
+          "instance": "^discord$"
+        }
+      ]
+    },
+    {
+      "percent": 0.5,
+      "swallows": [
+        {
+          "class": "^Slack$",
+          "instance": "^slack$"
+        }
+      ],
+      "type": "con"
+    }
+  ]
+}
+{
+  "name": "Mozilla Firefox",
+  "percent": 0.4,
+  "swallows": [
+    {
+      "class": "^Firefox$",
+      "title": "Inbox"
+    }
+  ],
+  "type": "con"
+}

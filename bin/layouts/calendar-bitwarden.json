@@ -1,0 +1,32 @@
+{
+  "border": "normal",
+  "floating": "auto_off",
+  "layout": "stacked",
+  "marks": [],
+  "percent": 1,
+  "type": "con",
+  "nodes": [
+    {
+      "name": "Bitwarden",
+      "percent": 1,
+      "swallows": [
+        {
+          "class": "^Bitwarden$",
+          "instance": "^bitwarden$"
+        }
+      ],
+      "type": "con"
+    },
+    {
+      "border": "pixel",
+      "percent": 1,
+      "swallows": [
+        {
+          "class": "^Chromium\\-browser$",
+          "instance": "^chromium\\-browser$"
+        }
+      ],
+      "type": "con"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Mozilla Firefox",
+  "percent": 0.4,
+  "swallows": [
+    {
+      "class": "^Firefox$",
+      "instance": "^Navigator$"
+    }
+  ],
+  "type": "con"
+}
