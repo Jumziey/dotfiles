@@ -59,6 +59,7 @@
         i3status
       ];
       package = pkgs.i3-gaps;
+      configFile = ./configs/i3/config;
     };
 
     displayManager = {
