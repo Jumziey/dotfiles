@@ -49,6 +49,9 @@ noremap <c-c> <c-o>
 noremap <c-g> <c-]>
 noremap <c-c> :tselect<CR>
 
+"Alternate
+noremap <F12> :A<CR>
+
 
 " tabs should be two spaces! I don't care what you think
 set tabstop=2 sw=2 ai
