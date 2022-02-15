@@ -1,5 +1,16 @@
 { config, pkgs, lib, ... }:
 let
+  angular-language-server = pkgs.mkYarnPackage {
+    name = "angular-language-server";
+    pname = "@angular/language-server";
+    src = pkgs.fetchFromGitHub {
+      owner = "angular";
+      repo = "vscode-ng-language-service";
+      rev = "6b8d49e9b43a2f15adeabd81298e16ebdbfa6840";
+      sha256 = "0s4ry0nxqdnc5zpdzj5xd918g4791b7w497yxv1c4ic97msbwqs6";
+    };
+  };
+
   material-vim = pkgs.vimUtils.buildVimPlugin {
     name = "material.vim";
     src = pkgs.fetchFromGitHub {
@@ -118,11 +129,14 @@ in
       yaml-language-server
       jdt-language-server
       gopls
+      terraform-ls
+      nodePackages.typescript-language-server
+      # angular-language-server
     ];
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;
+    #package = pkgs.neovim-nightly;
     defaultEditor = true;
   };
 
@@ -130,10 +144,6 @@ in
     (self: super: {
       jdt-language-server = pkgs.callPackage ./custom-pkgs/jdt-language-server.nix { };
     })
-    #neovim-nightly
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
     (self: super: {
       neovim = super.neovim.override {
         viAlias = true;
@@ -163,7 +173,7 @@ in
               vim-dispatch-neovim
 
               # go langauge support
-              vim-go
+              # vim-go
 
               #Latex integration
               vimtex
@@ -233,6 +243,8 @@ in
               nvim-jdtls
 
               dashboard-nvim
+
+              vim-projectionist
             ];
             opt = [ ];
           };
@@ -262,6 +274,7 @@ in
               ${lib.strings.fileContents ./plugins/lspconfig.lua}
               ${lib.strings.fileContents ./plugins/cmp.lua}
               ${lib.strings.fileContents ./plugins/dashboard.lua}
+              ${lib.strings.fileContents ./plugins/treesitter.lua}
               EOF
             ''
           ];
