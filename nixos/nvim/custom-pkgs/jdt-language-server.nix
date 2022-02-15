@@ -2,23 +2,23 @@
 , stdenv
 , fetchurl
 , makeWrapper
-, jdk16
+, jdk17
 }:
 
 stdenv.mkDerivation rec {
   pname = "jdt-language-server";
-  version = "1.3.0";
-  timestamp = "202108171748";
+  version = "1.7.0";
+  timestamp = "202112161541";
 
   src = fetchurl {
     url = "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-    sha256 = "1rfnj91njc48vzj1km38hpgs2j4g0gdcpn1i0bz4yx9z3yjafqw5";
+    sha256 = "0ll5rgd8i8wfg2zz0ciapakl66qqaw344129qj72cyiixkgjh31g";
   };
 
   sourceRoot = ".";
 
   buildInputs = [
-    jdk16
+    jdk17
   ];
 
   nativeBuildInputs = [
@@ -72,7 +72,7 @@ stdenv.mkDerivation rec {
       #     This can be overidden by specifying -configuration to the wrapper.
       #
       # Java options, such as -Xms and Xmx can be specified by setting JAVA_OPTS.
-      makeWrapper ${jdk16}/bin/java $out/bin/jdt-language-server \
+      makeWrapper ${jdk17}/bin/java $out/bin/jdt-language-server \
         --run "mkdir -p ${runtimePath}" \
         --run "install -Dm 1777 -t ${runtimePath}/config $out/share/config/*" \
         --add-flags "-Declipse.application=org.eclipse.jdt.ls.core.id1" \
