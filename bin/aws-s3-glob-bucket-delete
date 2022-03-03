@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+GLOB="$1"
+
+if [ "$#" -ne 1 ]; then
+    echo "Illegal number of parameters"
+		exit 1
+fi
+
+S3_BUCKETS=$(aws s3 ls | awk '{print $3}' | grep "${GLOB}" | tr '\n' ' ')
+
+if [ -z "${S3_BUCKETS}" ]; then 
+	echo "no buckets was found when grepping for: ${GLOB}"
+	exit 0
+fi
+
+echo "${S3_BUCKETS}" | tr ' ' '\n'
+read -p "Continue deleting these buckets (y/n)? " -n 1 -r
+echo    # (optional) move to a new line
+if [[ "${REPLY}" =~ ^[Yy]$ ]]
+then
+	for S3_BUCKET in ${S3_BUCKETS}
+	do 
+		echo "deleting ${S3_BUCKET}"
+		aws s3 rb "s3://${S3_BUCKET}" --force
+	done
+else 
+	echo "no deleting today!"
+fi
