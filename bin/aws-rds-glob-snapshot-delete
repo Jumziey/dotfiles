@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+GLOB="$1"
+
+if [ "$#" -ne 1 ]; then
+    echo "Illegal number of parameters"
+		exit 1
+fi
+
+SNAPSHOTS=$(aws rds describe-db-snapshots  --query "*[].{DBSnapshots:DBSnapshotIdentifier}"  --output text | grep "${GLOB}" | tr '\n' ' ')
+
+if [ -z "${SNAPSHOTS}" ]; then 
+	echo "no snapshot was found when grepping for: ${GLOB}"
+	exit 0
+fi
+
+echo "${SNAPSHOTS}" | tr ' ' '\n'
+read -p "Continue deleting these buckets (y/n)? " -n 1 -r
+echo    # (optional) move to a new line
+if [[ "${REPLY}" =~ ^[Yy]$ ]]
+then
+	for SNAPSHOT in ${SNAPSHOTS}
+	do 
+		echo "deleting ${SNAPSHOT}"
+ 		aws rds delete-db-snapshot --db-snapshot-identifier "${SNAPSHOT}" &>/dev/null
+	done
+else 
+	echo "no deleting today!"
+fi
