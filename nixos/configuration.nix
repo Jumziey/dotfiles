@@ -101,13 +101,13 @@
         "networkmanager"
       ];
     shell = pkgs.zsh;
-    initialHashedPassword = "test";
+    initialPassword = "test";
   };
 
   environment.systemPackages = with pkgs; [
     lightdm
     # awscli2
-    python38Packages.cfn-lint
+    #python38Packages.cfn-lint
     git
     nix-index
     dhcpcd
