@@ -175,6 +175,18 @@
     awscli2
     jdt-language-server
     yarn
+    nodePackages.lerna
+    terraform
+    cucumber
+    openjdk11
+    maven
+    wget
+    curl
+    unzip
+    k9s
+    minikube
+    direnv
+    zsh-nix-shell
   ];
   services.prometheus.exporters.node = {
     port = 9100;
