@@ -197,7 +197,6 @@
   services.blueman.enable = true;
 
   programs = {
-    zsh.enable = true;
     steam.enable = true;
     nm-applet.enable = true;
     dconf.enable = true;
@@ -240,13 +239,85 @@
 
   services.sshd.enable = true;
 
+  environment.variables = {
+    MOZ_USE_XINPUT2 = "1";
+    PATH = [
+      "\${HOME}/bin"
+      "."
+      "\${HOME}/.local/bin"
+    ];
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+
+    interactiveShellInit = ''
+      source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
+    '';
+
+    shellInit = ''
+      eval "$(direnv hook zsh)"
+
+      SAVEHIST=1000
+      setopt appendhistory notify
+      unsetopt autocd beep extendedglob nomatch
+      bindkey -v
+      bindkey -a s vi-forward-char
+      bindkey -a t down-history
+      bindkey -a n up-history
+    '';
+
+    # source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
+    promptInit = ''
+        autoload -U promptinit; promptinit
+        prompt spaceship
+        spaceship_nix_shell() {
+          name="''${name%-shell-env}"
+          name="''${name%-shell}"
+          name="''${name%shell}"
+
+          if [ ! -z ''${name} ]; then
+            prefix="$name"
+          fi
+          if [ ! -z ''${NIX_SHELL_PACKAGES} ];then
+            prefix="''${prefix}($NIX_SHELL_PACKAGES)"
+          fi
+          if [ ! -z ''${prefix} ];then
+            spaceship::section "red" "" "$prefix " ""
+          fi
+        }
+      SPACESHIP_PROMPT_ORDER=(nix_shell $SPACESHIP_PROMPT_ORDER )
+    '';
+    setOptions = [
+      "append_history"
+      "hist_ignore_dups"
+      "hist_ignore_space"
+    ];
+
+
+    shellAliases = {
+      getfont = "fc-list | cut -d ':' -f  2 | sort | fzf | xargs | tee >(xclip -selection primary&) >(xclip -selection clipboard&)";
+
+      printrun = "docker run --device /dev/ttyACM0 -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD:/root twhtanghk/docker.printrun";
+
+      printrunACM1 = "docker run - -device /dev/ttyACM1 - e DISPLAY - v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD:/root twhtanghk/docker.printrun";
+
+      xcl = "tr -d [:space:] | xclip -selection clipboard";
+      cppwd = ''echo -n "cd $(pwd | tr -d [:space:])" | xclip -selection clipboard'';
+      sudo = "sudo -E";
+      portcheck = "netstat -ltnp";
+      ls = "ls --color";
+    };
+  };
+
   nixpkgs.overlays = [
-    (self: super: {
-      discord = super.discord.override rec {
-        version = "0.0.16";
-        src = super.fetchurl {
+    (final: prev: {
+      discord = prev.discord.override rec {
+        version = "0.0.17";
+        src = prev.fetchurl {
           url = "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz";
-          sha256 = "1s9qym58cjm8m8kg3zywvwai2i3adiq6sdayygk2zv72ry74ldai";
+          sha256 = "058k0cmbm4y572jqw83bayb2zzl2fw2aaz0zj1gvg6sxblp76qil";
         };
       };
     })
