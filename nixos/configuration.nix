@@ -14,6 +14,13 @@
     ];
 
 
+  nix = {
+    extraOptions = ''
+      extra-experimental-features = nix-command
+      extra-experimental-features = flakes
+    '';
+  };
+
   # boot loader, might go to grub laters
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
