@@ -31,6 +31,12 @@
   networking.useDHCP = false;
   # Might need to move out, since it's specific
 
+  networking.extraHosts =
+    ''
+      192.168.1.1 router
+      192.168.1.116 jumziPi
+      192.168.1.173 jumziServer
+    '';
 
   time.timeZone = "Europe/Stockholm";
 
