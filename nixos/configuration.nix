@@ -29,7 +29,7 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.dhcp = "dhcpcd";
   networking.useDHCP = false;
-  # Might need to move out, since it's specific
+  networking.nameservers = [ "208.67.222.222" "208.67.220.220" ];
 
   networking.extraHosts =
     ''
