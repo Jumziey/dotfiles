@@ -12,9 +12,10 @@ local on_attach = function(client, bufnr)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', '<C-g>', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', '<C-i>', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-i>', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', '<C-g>', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-w>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<C-a>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 end
 
 local runtime_path = vim.split(package.path, ';')
@@ -49,20 +50,6 @@ lua_lsp.sumneko_lua.setup {
   },
 }
 
-local go_lsp = require("lspconfig")
-go_lsp.gopls.setup {
-	on_attach = on_attach,
-	cmd = {"gopls", "serve"},
-	settings = {
-		gopls = {
-			analyses = {
-				unusedparams = false,
-			},
-			staticcheck = true,
-		},
-	},
-}
-
 local tsserver_lsp = require("lspconfig")
 tsserver_lsp.tsserver.setup{
 	on_attach = on_attach,
@@ -72,3 +59,12 @@ local terraformls_lsp = require("lspconfig")
 terraformls_lsp.terraformls.setup{
 	on_attach = on_attach,
 }
+
+require'lspconfig'.gopls.setup{
+  on_attach = on_attach,
+}
+
+require'lspconfig'.cmake.setup{
+	on_attach = on_attach,
+}
+

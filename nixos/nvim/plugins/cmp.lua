@@ -1,5 +1,10 @@
 local cmp = require 'cmp'
 cmp.setup {
+	snippet = {
+		expand = function(args)
+        vim.fn["UltiSnips#Anon"](args.body)
+		end,
+	},
 	completion = {
     completeopt = 'menu,menuone,noinsert',
 	},

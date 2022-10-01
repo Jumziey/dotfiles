@@ -12,6 +12,17 @@ augroup END
 
 lua << EOF
 local yaml_lsp = require("lspconfig")
-yaml_lsp.yamlls.setup{}
+yaml_lsp.yamlls.setup{
+  settings = {
+    yaml = {
+      ... -- other settings. note this overrides the lspconfig defaults.
+      schemas = {
+        ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.k8s.yaml",
+        ... -- other schemas
+      },
+    },
+  }
+}
+
 EOF
 LspStart

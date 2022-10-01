@@ -6,8 +6,18 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "angular";
       repo = "vscode-ng-language-service";
-      rev = "6b8d49e9b43a2f15adeabd81298e16ebdbfa6840";
-      sha256 = "0s4ry0nxqdnc5zpdzj5xd918g4791b7w497yxv1c4ic97msbwqs6";
+      rev = "75c1967ada5431125a7b7a5c20736d493e8508c5";
+      sha256 = "1xmlmb53520jrj9bzfhi4db4jzx2wjfl5vjpppfp5740yi26c25j";
+    };
+  };
+
+  custom-hop-vim = pkgs.vimUtils.buildVimPlugin {
+    name = "hop-vim";
+    src = pkgs.fetchFromGitHub {
+      owner = "phaazon";
+      repo = "hop.vim";
+      rev = "e2f978b50c2bd9ae2c6a4ebdf2222c0f299c85c3";
+      sha256 = "1si2ibxidjn0l565vhr77949s16yjv46alq145b19h15amwgq3g2";
     };
   };
 
@@ -125,24 +135,29 @@ in
   environment.systemPackages = with pkgs;
     [
       neovim
-      sumneko-lua-language-server
+      #sumneko-lua-language-server
       yaml-language-server
-      jdt-language-server
+      #jdt-language-server
       gopls
       terraform-ls
       nodePackages.typescript-language-server
-      # angular-language-server
+      # cmake-language-server #did not work in upgrade 2022-08-03
+      golangci-lint
+      golint
+      godef
+      gotools
+      angular-language-server
     ];
 
-  programs.neovim = {
-    enable = true;
-    #package = pkgs.neovim-nightly;
-    defaultEditor = true;
-  };
+  #programs.neovim = {
+  #  enable = true;
+  #  #   #package = pkgs.neovim-nightly;
+  #  defaultEditor = true;
+  #};
 
   nixpkgs.overlays = [
     (self: super: {
-      jdt-language-server = pkgs.callPackage ./custom-pkgs/jdt-language-server.nix { };
+      #jdt-language-server = pkgs.callPackage ./custom-pkgs/jdt-language-server.nix { };
     })
     (self: super: {
       neovim = super.neovim.override {
@@ -161,19 +176,16 @@ in
               vim-airline-themes
 
               # jump in text easily, easymotion style
-              hop-nvim
+              custom-hop-vim
 
               # Gives git status per line
               gitgutter
 
               # Best git manager evah
               fugitive
-
+              fugitive-gitlab-vim
               # Gives g push asynch to fugitive
-              vim-dispatch-neovim
-
-              # go langauge support
-              # vim-go
+              #vim-dispatch-neovim
 
               #Latex integration
               vimtex
@@ -189,7 +201,7 @@ in
               intero-neovim
 
               # markdown
-              markdown-preview-nvim
+              #markdown-preview-nvim
 
               # Bats 
               bats-vim
@@ -238,13 +250,34 @@ in
 
               neomake-jumziey-vim
 
-              nvim-treesitter
+              (nvim-treesitter.withPlugins (
+                plugins: with plugins; [
+                  tree-sitter-nix
+                  tree-sitter-python
+                  tree-sitter-hcl
+                  tree-sitter-c
+                  tree-sitter-css
+                  tree-sitter-yaml
+                  tree-sitter-toml
+                  tree-sitter-markdown
+                  tree-sitter-markdown-inline
+                  tree-sitter-java
+                  tree-sitter-javascript
+                  tree-sitter-html
+                  tree-sitter-haskell
+                  tree-sitter-go
+                  tree-sitter-dockerfile
+                  tree-sitter-cpp
+                ]
+              ))
 
               nvim-jdtls
 
               dashboard-nvim
 
               vim-projectionist
+
+              UltiSnips
             ];
             opt = [ ];
           };
