@@ -11,8 +11,8 @@
       "percent": 1,
       "swallows": [
         {
-          "class": "^Chromium\\-browser$",
-          "instance": "^chromium\\-browser$"
+          "class": "^Chromium-browser$",
+          "title": "Calendar"
         }
       ],
       "type": "con"

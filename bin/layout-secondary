@@ -2,7 +2,7 @@
 SCRIPT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)
 
 i3-msg "workspace 8; append_layout $SCRIPT_ROOT/layouts/music-bitwarden.json"
-i3-msg 'workspace 8; exec chromium --new-window https://music.youtube.com'
+i3-msg 'workspace 8; exec firefox --new-window https://music.youtube.com'
 i3-msg 'workspace 8; exec bitwarden'
 
 sleep 1

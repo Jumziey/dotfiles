@@ -29,12 +29,11 @@
   ]
 }
 {
-  "name": "Mozilla Firefox",
   "percent": 0.4,
   "swallows": [
     {
-      "class": "^Firefox$",
-      "title": "Inbox"
+      "class": "Firefox"
+			"title": "Codemill AB Mail"
     }
   ],
   "type": "con"

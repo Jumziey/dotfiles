@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo "ALTER DEFAULT PRIVILEGES REVOKE ALL on SCHEMAS FROM public;"
+
+echo "CREATE DATABASE ${1};"
+echo "REVOKE ALL ON DATABASE '${1}' FROM public;"
+
+echo "CREATE USER ${1} WITH PASSWORD ${2};"
+echo "GRANT CREATE,TEMPORARY,CONNECT ON DATABASE ${1} to ${1};"
+
+echo "\connect ${1}"
+
+echo "CREATE SCHEMA ${1};"
+

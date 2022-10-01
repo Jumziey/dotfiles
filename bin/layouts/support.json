@@ -3,8 +3,8 @@
   "percent": 0.4,
   "swallows": [
     {
-      "class": "^Firefox$",
-      "instance": "^Navigator$"
+      "class": "Firefox",
+      "title": "GitLab"
     }
   ],
   "type": "con"
