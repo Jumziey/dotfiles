@@ -82,7 +82,7 @@
   services.printing.drivers = with pkgs; [
     gutenprint
     gutenprintBin
-    samsungUnifiedLinuxDriver
+    samsung-unified-linux-driver
     splix
     brlaser
     brgenml1lpr
@@ -99,10 +99,13 @@
         "wheel"
         "docker"
         "networkmanager"
+        "libvirtd"
       ];
     shell = pkgs.zsh;
     initialPassword = "test";
   };
+
+  users.extraGroups.vboxusers.members = [ "jumzi" ];
 
   environment.systemPackages = with pkgs; [
     lightdm
@@ -149,11 +152,7 @@
     discord
     deluge
     flameshot
-    gopls
     go
-    golangci-lint
-    golint
-    goimports
     chromium
     ngrok
     tmux
@@ -173,20 +172,23 @@
     fzf
     nix-prefetch-git
     awscli2
-    jdt-language-server
-    yarn
-    nodePackages.lerna
     terraform
     cucumber
-    openjdk11
-    maven
     wget
     curl
     unzip
     k9s
     minikube
-    direnv
     zsh-nix-shell
+    direnv
+    virt-manager
+    vagrant
+    tdesktop
+    kubeseal
+    openssl
+  ];
+  environment.pathsToLink = [
+    "/share/nix-direnv"
   ];
   services.prometheus.exporters.node = {
     port = 9100;
@@ -231,7 +233,16 @@
     };
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation =
+    {
+      docker.enable = true;
+      libvirtd.enable = true;
+      virtualbox.host.enable = true;
+    };
+  environment.etc."vbox/networks.conf".text = ''
+    * 192.168.5.0/8
+    * 192.168.56.0/21
+  '';
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
