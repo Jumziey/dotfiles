@@ -247,6 +247,7 @@
       "\${HOME}/.local/bin"
       "\${HOME}/.go/bin"
     ];
+    EDITOR = "nvim";
   };
 
   programs.zsh = {
