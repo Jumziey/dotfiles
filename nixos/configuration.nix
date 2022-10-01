@@ -297,6 +297,7 @@
 
 
     shellAliases = {
+      listDesktopFiles = ''find / -iname "*desktop" -type f -not -path "/nix/store*" 2> /dev/null'';
       getfont = "fc-list | cut -d ':' -f  2 | sort | fzf | xargs | tee >(xclip -selection primary&) >(xclip -selection clipboard&)";
 
       printrun = "docker run --device /dev/ttyACM0 -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD:/root twhtanghk/docker.printrun";
