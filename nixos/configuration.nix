@@ -314,10 +314,10 @@
   nixpkgs.overlays = [
     (final: prev: {
       discord = prev.discord.override rec {
-        version = "0.0.17";
+        version = "0.0.20";
         src = prev.fetchurl {
           url = "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz";
-          sha256 = "058k0cmbm4y572jqw83bayb2zzl2fw2aaz0zj1gvg6sxblp76qil";
+          sha256 = "1355xiw0k0i6cbi1zcq7fphma6r8hz87lhm8ybg5s45032xz5znx";
         };
       };
     })
