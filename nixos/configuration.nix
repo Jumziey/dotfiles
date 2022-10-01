@@ -288,6 +288,9 @@
           fi
         }
       SPACESHIP_PROMPT_ORDER=(nix_shell $SPACESHIP_PROMPT_ORDER )
+      SPACESHIP_KUBECTL_SHOW=true
+      SPACESHIP_KUBECTL_VERSION_SHOW=false
+      SPACESHIP_KUBECONTEXT_SHOW=true
     '';
     setOptions = [
       "append_history"
