@@ -250,8 +250,8 @@
   '';
 
   # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.09";
+  # (e.g. man configuration.nix or on https://nixos.rg/nixos/options.html).
+  system.stateVersion = "22.05";
 
   services.sshd.enable = true;
 
