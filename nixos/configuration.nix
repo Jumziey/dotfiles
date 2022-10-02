@@ -259,7 +259,6 @@
     MOZ_USE_XINPUT2 = "1";
     PATH = [
       "\${HOME}/bin"
-      "."
       "\${HOME}/.local/bin"
       "\${HOME}/.go/bin"
     ];
