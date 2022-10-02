@@ -250,26 +250,7 @@ in
 
               neomake-jumziey-vim
 
-              (nvim-treesitter.withPlugins (
-                plugins: with plugins; [
-                  tree-sitter-nix
-                  tree-sitter-python
-                  tree-sitter-hcl
-                  tree-sitter-c
-                  tree-sitter-css
-                  tree-sitter-yaml
-                  tree-sitter-toml
-                  tree-sitter-markdown
-                  tree-sitter-markdown-inline
-                  tree-sitter-java
-                  tree-sitter-javascript
-                  tree-sitter-html
-                  tree-sitter-haskell
-                  tree-sitter-go
-                  tree-sitter-dockerfile
-                  tree-sitter-cpp
-                ]
-              ))
+              (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
 
               nvim-jdtls
 
