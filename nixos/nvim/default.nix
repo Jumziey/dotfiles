@@ -4,10 +4,10 @@ let
     name = "angular-language-server";
     pname = "@angular/language-server";
     src = pkgs.fetchFromGitHub {
-      owner = "angular";
+      owner = "jumziey";
       repo = "vscode-ng-language-service";
-      rev = "75c1967ada5431125a7b7a5c20736d493e8508c5";
-      sha256 = "1xmlmb53520jrj9bzfhi4db4jzx2wjfl5vjpppfp5740yi26c25j";
+      rev = "6d66f973ba1ffc27fad574111d19ab58ecddd476";
+      sha256 = "1swip9h9hl3xqjs5ddrxkbdv4q5ssq6k2ljp9il7mvffif4q6hd0";
     };
   };
 
