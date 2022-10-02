@@ -155,7 +155,6 @@
     mpv
     kubernetes-helm
     bitwarden
-    discord
     deluge
     flameshot
     go
