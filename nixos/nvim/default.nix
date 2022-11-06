@@ -91,8 +91,8 @@ let
       src = pkgs.fetchFromGitHub {
         owner = "hrsh7th";
         repo = "nvim-cmp";
-        rev = "24406f995ea20abba816c0356ebff1a025c18a72";
-        sha256 = "142r41483xx7yw1gr4g1xi3rvzlprqwc72bq8rky0ys6mq50d7ic";
+        rev = "9bb8ee6e2d6ab3c8cc53323b79f05886bc722faa";
+        sha256 = "1z7b53yxamph255rvrs5a4pq5hbqa0nbwpdh1xy8fvfc71gap80n";
       };
       configurePhase = ''
         rm Makefile
@@ -104,8 +104,8 @@ let
       src = pkgs.fetchFromGitHub {
         owner = "hrsh7th";
         repo = "cmp-nvim-lsp";
-        rev = "f6f471898bc4b45eacd36eef9887847b73130e0e";
-        sha256 = "1asr32w5q618pqggq9jwrbqs4kjp3ssbw5pca5wc7j2496vm2lhg";
+        rev = "78924d1d677b29b3d1fe429864185341724ee5a2";
+        sha256 = "1gzn4v70wa61yyw9vfxb8m8kkabz0p35nja1l26cfhl71pnkqrka";
       };
     };
 
