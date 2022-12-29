@@ -375,6 +375,7 @@
       cppwd = ''echo -n "cd $(pwd | tr -d [:space:])" | xclip -selection clipboard'';
       sudo = "sudo -E";
       portcheck = "netstat -ltnp";
+      xclip = "xclip -selection clipboard";
       ls = "ls --color";
       open = "xdg-open";
     };
