@@ -376,6 +376,7 @@
       sudo = "sudo -E";
       portcheck = "netstat -ltnp";
       ls = "ls --color";
+      open = "xdg-open";
     };
   };
 
