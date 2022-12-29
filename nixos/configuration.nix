@@ -273,6 +273,51 @@
 
     interactiveShellInit = ''
       source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
+
+      recursive_replace() {
+        command="find \"$PWD\" -type f -print0 | xargs -0 sed -i \"s/''${1}/''${2}/g\""
+        echo "$command"
+        eval "$command"
+      }
+
+      tar_compress() {
+        tar -czvf "$1".tar.gz "$1"
+      }
+
+      lowercase() {
+        echo "''${1}" | tr '[:upper:]' '[:lower:]'
+      }
+
+      json_escape () {
+          python -c 'import json,sys;t=sys.stdin.read();print(json.dumps(t));' < $1 
+      }
+
+      vartype() {
+          local var
+          var=$( declare -p "$1" )
+          local reg='^declare -n [^=]+=\"([^\"]+)\"$'
+          while [[ $var =~ $reg ]]; do
+                  var=$( declare -p "''${BASH_REMATCH[1]}" )
+          done
+
+          case "''${var#declare -}" in
+          a*)
+                  echo "ARRAY"
+                  ;;
+          A*)
+                  echo "HASH"
+                  ;;
+          i*)
+                  echo "INT"
+                  ;;
+          x*)
+                  echo "EXPORT"
+                  ;;
+          *)
+                  echo "OTHER"
+                  ;;
+          esac
+      }
     '';
 
     shellInit = ''
