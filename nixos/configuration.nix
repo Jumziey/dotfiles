@@ -34,8 +34,10 @@
   networking.extraHosts =
     ''
       192.168.1.1 router
-      192.168.1.116 jumziPi
-      192.168.1.173 jumziServer
+      192.168.0.1 jumziServer
+      192.168.0.201 node-1
+      192.168.0.202 node-2
+      192.168.0.203 node-3
     '';
 
   time.timeZone = "Europe/Stockholm";
