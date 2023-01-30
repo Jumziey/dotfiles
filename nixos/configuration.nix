@@ -267,6 +267,10 @@
     interactiveShellInit = ''
       source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
 
+      title() {
+        echo -e "\033]0;''${1}\007"
+      }
+
       recursive_replace() {
         command="find \"$PWD\" -type f -print0 | xargs -0 sed -i \"s/''${1}/''${2}/g\""
         echo "$command"
