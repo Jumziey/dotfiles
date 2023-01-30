@@ -125,7 +125,6 @@
     zsh
     curl
     nodejs
-    zathura
     xclip
     docker
     docker-compose
@@ -153,7 +152,7 @@
     deluge
     flameshot
     go
-    chromium
+    google-chrome
     ngrok
     tmux
     jq
@@ -172,7 +171,6 @@
     fzf
     nix-prefetch-git
     awscli2
-    terraform
     cucumber
     wget
     curl
@@ -186,6 +184,10 @@
     tdesktop
     kubeseal
     openssl
+    postman
+    terraform
+    zathura
+    dolphin-emu-beta
   ];
   environment.pathsToLink = [
     "/share/nix-direnv"
