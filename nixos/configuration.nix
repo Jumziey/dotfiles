@@ -205,22 +205,20 @@
     nm-applet.enable = true;
     dconf.enable = true;
     gnupg.agent.enable = true;
+    tmux = {
+      enable = true;
+      shortcut = "a";
+      aggressiveResize = true;
+      baseIndex = 1;
+      newSession = true;
+      # Stop tmux+escape craziness.
+      escapeTime = 0;
+
+      extraConfig = ''
+        set -g status off
+      '';
+    };
   };
-
-  programs.tmux = {
-    enable = true;
-    shortcut = "a";
-    aggressiveResize = true;
-    baseIndex = 1;
-    newSession = true;
-    # Stop tmux+escape craziness.
-    escapeTime = 0;
-
-    extraConfig = ''
-      set -g status off
-    '';
-  };
-
   fonts = {
     fonts = with pkgs; [
       (nerdfonts.override { fonts = [ "Terminus" "Ubuntu" "JetBrainsMono" ]; })
