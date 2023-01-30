@@ -388,5 +388,26 @@
         };
       };
     })
+    (final: prev: {
+      dolphin-emu-beta = prev.dolphin-emu-beta.overrideAttrs (finalAttrs: prevAttrs: {
+        version = "5.0-17995";
+        src = prev.fetchFromGitHub {
+          owner = "dolphin-emu";
+          repo = "dolphin";
+          rev = "8bad821019721b9b72701b495da95656ace5fea5";
+          sha256 = "sha256-uxHzn+tXRBr11OPpZ4ELBw7DTJH4mnqUBOeyPlXNAh8=";
+          fetchSubmodules = true;
+
+        };
+      cmakeFlags = [
+        "-DDISTRIBUTOR=NixOS"
+        "-DUSE_SHARED_ENET=ON"
+        "-DDOLPHIN_WC_REVISION=${finalAttrs.src.rev}"
+        "-DDOLPHIN_WC_DESCRIBE=${finalAttrs.version}"
+        "-DDOLPHIN_WC_BRANCH=master"];
+      });
+    })
   ];
 }
+
+
