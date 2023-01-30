@@ -47,10 +47,10 @@ let
   plantuml-previewer-vim = pkgs.vimUtils.buildVimPlugin {
     name = "plantuml-previewer.vim";
     src = pkgs.fetchFromGitHub {
-      owner = "weirongxu";
+      owner = "Jumziey";
       repo = "plantuml-previewer.vim";
-      rev = "c2442f9091439080b129404e24eb301ad12c4c5b";
-      sha256 = "19zxpbzhwqcv9l8h0p767ajwjq6gh3lxy18wx3g6nhxbkm2dxfxl";
+      rev = "91d9071b9f500faf2be9bb46ad5727f4d53ecba7";
+      sha256 = "0z4gv5ykwlihf6fr1zdw090l4q7ncnyhn0pyf1wk7bj35fn0a5bf";
     };
   };
 
@@ -283,6 +283,7 @@ in
             (lib.strings.fileContents ./plugins/spelunker.vim)
             (lib.strings.fileContents ./plugins/fzf.vim)
             (lib.strings.fileContents ./plugins/vim-go.vim)
+            (lib.strings.fileContents ./plugins/plantuml-previewer.vim)
             ''
               lua << EOF
               ${lib.strings.fileContents ./plugins/lspconfig.lua}
