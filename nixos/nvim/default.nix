@@ -261,6 +261,8 @@ in
               vim-projectionist
 
               UltiSnips
+
+              vim-helm
             ];
             opt = [ ];
           };
