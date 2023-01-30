@@ -137,7 +137,7 @@ in
       neovim
       #sumneko-lua-language-server
       yaml-language-server
-      #jdt-language-server
+      jdt-language-server
       gopls
       terraform-ls
       nodePackages.typescript-language-server
@@ -157,7 +157,9 @@ in
 
   nixpkgs.overlays = [
     (self: super: {
-      #jdt-language-server = pkgs.callPackage ./custom-pkgs/jdt-language-server.nix { };
+      jdt-language-server = pkgs.callPackage ./custom-pkgs/jdt-language-server.nix { 
+        jdk17 = pkgs.jdk17;
+      };
     })
     (self: super: {
       neovim = super.neovim.override {
