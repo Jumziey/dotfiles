@@ -109,8 +109,6 @@ let
       };
     };
 
-
-
   # TODO: add linters
   neomake-jumziey-vim = pkgs.vimUtils.buildVimPlugin {
     name = "neomake";
