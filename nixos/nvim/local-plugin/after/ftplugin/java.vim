@@ -40,6 +40,7 @@ local settings = {
 require('jdtls').start_or_attach{
   cmd = {
     'jdt-language-server',
+    '-data', '/home/jumzi/.cache/jdt-language-server/' .. workspace_dir,
   },
 	on_attach = on_attach,
 	settings = settings,
