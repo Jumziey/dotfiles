@@ -52,9 +52,10 @@ tsserver_lsp.tsserver.setup{
 	on_attach = on_attach,
 }
 
-local terraformls_lsp = require("lspconfig")
-terraformls_lsp.terraformls.setup{
+local terraformls_ls = require("lspconfig")
+terraformls_ls.terraformls.setup{
 	on_attach = on_attach,
+  filetypes = { 'terraform', 'hcl' },
 }
 
 require'lspconfig'.gopls.setup{
@@ -65,3 +66,11 @@ require'lspconfig'.cmake.setup{
 	on_attach = on_attach,
 }
 
+
+require'lspconfig'.graphql.setup{
+  an_attach = on_attach,
+}
+
+require'lspconfig'.rnix.setup{
+  an_attach = on_attach,
+}
