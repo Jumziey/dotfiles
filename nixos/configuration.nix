@@ -13,6 +13,12 @@
       ./nvim/default.nix
     ];
 
+  nix ={
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+    extra-experimental-features = nix-command flakes
+    '';
+  };
 
   # boot loader, might go to grub laters
   boot.loader.systemd-boot.enable = true;
