@@ -133,25 +133,26 @@ in
   environment.systemPackages = with pkgs;
     [
       neovim
-      #sumneko-lua-language-server
+      sumneko-lua-language-server
       yaml-language-server
       jdt-language-server
       gopls
       terraform-ls
       nodePackages.typescript-language-server
-      # cmake-language-server #did not work in upgrade 2022-08-03
+      cmake-language-server 
       golangci-lint
       golint
       godef
       gotools
       angular-language-server
+      rnix-lsp
     ];
 
-  #programs.neovim = {
-  #  enable = true;
-  #  #   #package = pkgs.neovim-nightly;
-  #  defaultEditor = true;
-  #};
+  programs.neovim = {
+    enable = true;
+    #   #package = pkgs.neovim-nightly;
+    defaultEditor = true;
+  };
 
   nixpkgs.overlays = [
     (self: super: {
