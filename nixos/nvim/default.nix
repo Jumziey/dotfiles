@@ -150,7 +150,7 @@ in
 
   programs.neovim = {
     enable = true;
-    #   #package = pkgs.neovim-nightly;
+    #package = neovim-nightly-overlay.neovim;
     defaultEditor = true;
   };
 
