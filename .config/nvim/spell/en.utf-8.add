@@ -159,3 +159,5 @@ letsencrypt
 versioned
 kustomize
 yaml
+alertmanager_health_check
+alertmanager
