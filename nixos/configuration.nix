@@ -287,6 +287,10 @@
         viewnior "''$@"
       }
 
+      play() {
+        mpv "''$@" 
+      }
+
       tar_compress() {
         tar -czvf "$1".tar.gz "$1"
       }
