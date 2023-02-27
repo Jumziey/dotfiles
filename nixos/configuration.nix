@@ -290,7 +290,7 @@
       }
 
       tar_compress() {
-        tar -czvf "$1".tar.gz "$1"
+        tar -czvf "''${1}".tar.gz "''${1}"
       }
 
       lowercase() {
