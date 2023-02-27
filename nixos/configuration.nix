@@ -283,6 +283,10 @@
         eval "$command"
       }
 
+      img() {
+        viewnior "''$@"
+      }
+
       tar_compress() {
         tar -czvf "$1".tar.gz "$1"
       }
