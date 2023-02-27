@@ -116,8 +116,6 @@
 
   environment.systemPackages = with pkgs; [
     lightdm
-    # awscli2
-    #python38Packages.cfn-lint
     git
     nix-index
     dhcpcd
