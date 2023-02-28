@@ -132,8 +132,8 @@ in
 {
   environment.systemPackages = with pkgs;
     [
-      neovim
-      sumneko-lua-language-server
+      lua-language-server
+      tree-sitter
       yaml-language-server
       jdt-language-server
       gopls
@@ -146,6 +146,10 @@ in
       gotools
       angular-language-server
       rnix-lsp
+      neovim
+      gcc
+      xdotool
+      pstree
     ];
 
   programs.neovim = {
@@ -251,11 +255,52 @@ in
 
               neomake-jumziey-vim
 
-              (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+              nvim-treesitter-context
+              nvim-treesitter-refactor
+              nvim-treesitter-textobjects
+              (nvim-treesitter.withPlugins (
+                plugins: with plugins; [
+                  bash
+                  c
+                  c_sharp
+                  cmake
+                  cpp
+                  css
+                  diff
+                  dockerfile
+                  dot
+                  git_rebase
+                  gitattributes
+                  gitcommit
+                  gitignore
+                  go
+                  gomod
+                  gosum
+                  gowork
+                  java
+                  javascript
+                  typescript
+                  jq
+                  jsdoc
+                  http
+                  json
+                  make
+                  markdown
+                  markdown_inline
+                  proto
+                  python
+                  regex
+                  sql
+                  terraform
+                  yaml
+                  toml
+                  vim
+                  nix
+                  python
+                ]
+              ))
 
               nvim-jdtls
-
-              dashboard-nvim
 
               vim-projectionist
 
@@ -291,7 +336,6 @@ in
               lua << EOF
               ${lib.strings.fileContents ./plugins/lspconfig.lua}
               ${lib.strings.fileContents ./plugins/cmp.lua}
-              ${lib.strings.fileContents ./plugins/dashboard.lua}
               ${lib.strings.fileContents ./plugins/treesitter.lua}
               EOF
             ''
