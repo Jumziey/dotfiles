@@ -1,7 +1,7 @@
 {
   description = "JumziConf";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?rev=568db3e44723d02431ba0e83321f64f17e3d5d51";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
   };
 
   outputs = { nixpkgs, ... }: 

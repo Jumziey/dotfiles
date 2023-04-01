@@ -42,8 +42,6 @@
   #};
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
 
   services.xserver.libinput = {
     enable = true;
