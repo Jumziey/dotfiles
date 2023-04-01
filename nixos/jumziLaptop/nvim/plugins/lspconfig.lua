@@ -20,7 +20,6 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 local lua_lsp = require("lspconfig")
-
 lua_lsp.lua_ls.setup {
 	on_attach = on_attach,
   cmd = { "lua-language-server" };

@@ -357,7 +357,7 @@
             prefix="''${prefix}($NIX_SHELL_PACKAGES)"
           fi
           if [ ! -z ''${prefix} ];then
-            spaceship::section "red" "" "$prefix " ""
+            spaceship::section "RED" "" "$prefix " ""
           fi
         }
       SPACESHIP_PROMPT_ORDER=(nix_shell $SPACESHIP_PROMPT_ORDER )
