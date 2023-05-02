@@ -192,6 +192,7 @@
     terraform
     zathura
     dolphin-emu-beta
+    git-lfs
   ];
   environment.pathsToLink = [
     "/share/nix-direnv"
