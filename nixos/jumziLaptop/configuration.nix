@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, jpkgs, ... }:
 
 {
 
@@ -120,7 +120,8 @@
 
   users.extraGroups.vboxusers.members = [ "jumzi" ];
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs // jpkgs; [
+    bitwarden-bws
     lightdm
     git
     nix-index
@@ -159,6 +160,7 @@
     mpv
     kubernetes-helm
     bitwarden
+    bitwarden-cli
     deluge
     flameshot
     go
