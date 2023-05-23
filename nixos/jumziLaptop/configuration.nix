@@ -28,7 +28,7 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.dhcp = "dhcpcd";
   networking.useDHCP = false;
-  networking.nameservers = [ "208.67.222.222" "208.67.220.220" ];
+  networking.nameservers = [ "192.168.1.1" ];
 
   networking.extraHosts =
     ''
