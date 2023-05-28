@@ -35,11 +35,11 @@
       "locked": {
         "lastModified": 1,
         "narHash": "sha256-dZyCHkmFx4ZQ7RlVtH0FgFW71C2zAbUdIPtLYOJOwEE=",
-        "path": "/nix/store/8clbiyka256xqn091qsffqrallf2n835-source/nixos/jumziLaptop/pkgs/bitwarden-bws",
+        "path": "/nix/store/q3nm23l9ydicgdanyxr8wz2ry6r557xk-source/nixos/jumziLaptop/pkgs/bitwarden-bws",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/8clbiyka256xqn091qsffqrallf2n835-source/nixos/jumziLaptop/pkgs/bitwarden-bws",
+        "path": "/nix/store/q3nm23l9ydicgdanyxr8wz2ry6r557xk-source/nixos/jumziLaptop/pkgs/bitwarden-bws",
         "type": "path"
       }
     },
