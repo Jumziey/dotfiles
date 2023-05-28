@@ -51,7 +51,7 @@ augroup java
   autocmd!
 	" Auto Formatting
 	"
-	autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 100)
+  autocmd BufWritePre * lua vim.lsp.buf.format({async=true})
 	" Auto imports
 	"
 	autocmd BufWritePre * lua require'jdtls'.organize_imports()
