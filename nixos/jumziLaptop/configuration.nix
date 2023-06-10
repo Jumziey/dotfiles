@@ -61,6 +61,7 @@
   services.k3s = {
     enable = true;
     role = "server";
+    extraFlags = "--kubelet-arg=eviction-hard=nodefs.available<2Gi";
   };
 
 
