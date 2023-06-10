@@ -268,7 +268,7 @@
     PATH = [
       "\${HOME}/bin"
       "\${HOME}/.local/bin"
-      "\${HOME}/.go/bin"
+      "\${HOME}/go/bin"
     ];
     EDITOR = "nvim";
   };
