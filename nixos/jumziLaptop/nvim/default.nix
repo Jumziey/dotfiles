@@ -150,6 +150,7 @@ in
       gcc
       xdotool
       pstree
+      helm-ls
     ];
 
   programs.neovim = {

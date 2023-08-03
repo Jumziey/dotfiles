@@ -67,9 +67,13 @@ require'lspconfig'.cmake.setup{
 
 
 require'lspconfig'.graphql.setup{
-  an_attach = on_attach,
+  on_attach = on_attach,
 }
 
 require'lspconfig'.rnix.setup{
-  an_attach = on_attach,
+  on_attach = on_attach,
+}
+
+require'lspconfig'.helm_ls.setup{
+  on_attach = on_attach,
 }
