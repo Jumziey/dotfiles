@@ -28,7 +28,7 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.dhcp = "dhcpcd";
   networking.useDHCP = false;
-  networking.nameservers = [ "192.168.1.1" ];
+  networking.nameservers = [ "1.1.1.1" ];
 
   networking.extraHosts =
     ''
@@ -309,7 +309,7 @@
       json_escape () {
           python -c 'import json,sys;t=sys.stdin.read();print(json.dumps(t));' < $1 
       }
-
+      
       vartype() {
           local var
           var=$( declare -p "$1" )
