@@ -7,5 +7,5 @@ augroup terraform
   autocmd!
 	" Auto Formatting
 	"
-	autocmd BufWritePre * lua vim.lsp.buf.formatting()
+	autocmd BufWritePre * lua vim.lsp.buf.format({async=false})
 augroup END
