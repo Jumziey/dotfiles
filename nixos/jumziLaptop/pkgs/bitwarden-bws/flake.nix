@@ -15,17 +15,17 @@
         packages = {
           bitwarden-bws = pkgs.rustPlatform.buildRustPackage {
             pname = "bitwarden-bws";
-            version = "0.2.1";
+            version = "0.3.0";
             cargoBuildFlags = "-p bws";
             nativeBuildInputs = [ pkgs.pkg-config pkgs.python3 ];
             buildInputs = [ pkgs.openssl ];
             src = pkgs.fetchFromGitHub {
               owner = "bitwarden";
               repo = "sdk";
-              rev = "bws-v0.2.1";
-              sha256 = "1rm0zvzrziyfdfh3ham6b5ppacdi7f8cy2cs04m96a6vc8aq41z1";
+              rev = "bws-v0.3.0";
+              sha256 = "11mxg65r98pjjf54jad7288b4z8ipvg7qgqhnvp5gwrws4xndsx3";
             };
-            cargoHash = "sha256-YroKR1HUCv8ypfK8RagpB9VsKe1xZHrpN9kOS7WndsM=";
+            cargoHash = "sha256-b7GtBd1fM5cf80qY4XLFFZ/WEGjWvZ3ulSGDSX6OWdQ=";
           };
           default = packages.bitwarden-bws;
         };
