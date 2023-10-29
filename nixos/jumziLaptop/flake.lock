@@ -34,12 +34,12 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-dZyCHkmFx4ZQ7RlVtH0FgFW71C2zAbUdIPtLYOJOwEE=",
-        "path": "/nix/store/pvlg9k00cn40bq8sckbg84pwgn3zhz2c-source/nixos/jumziLaptop/pkgs/bitwarden-bws",
+        "narHash": "sha256-uoIoI/9lt4BfOtFAYK+KMjziAJc8cubnUMpUnitTLTY=",
+        "path": "/nix/store/m2kb4gczs7znwm8c34bn6pcmk04rma9y-source/nixos/jumziLaptop/pkgs/bitwarden-bws",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/pvlg9k00cn40bq8sckbg84pwgn3zhz2c-source/nixos/jumziLaptop/pkgs/bitwarden-bws",
+        "path": "/nix/store/m2kb4gczs7znwm8c34bn6pcmk04rma9y-source/nixos/jumziLaptop/pkgs/bitwarden-bws",
         "type": "path"
       }
     },
@@ -61,11 +61,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1686319658,
-        "narHash": "sha256-tGWdoUAqKnE866mYFlEfc2a99kxFy31hOQJH5YQKrTQ=",
+        "lastModified": 1690881714,
+        "narHash": "sha256-h/nXluEqdiQHs1oSgkOOWF+j8gcJMWhwnZ9PFabN6q0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ae766d59b07c450e0f1de8a1bfd6529089f40849",
+        "rev": "9e1960bc196baf6881340d53dccb203a951745a2",
         "type": "github"
       },
       "original": {
