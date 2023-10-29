@@ -208,10 +208,8 @@
     tdesktop
     kubeseal
     openssl
-    postman
     terraform
     zathura
-    dolphin-emu-beta
     git-lfs
   ];
   environment.pathsToLink = [
@@ -414,32 +412,32 @@
   nixpkgs.overlays = [
     (final: prev: {
       discord = prev.discord.override rec {
-        version = "0.0.21";
+        version = "0.0.32";
         src = prev.fetchurl {
           url = "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz";
           sha256 = "sha256-KDKUssPRrs/D10s5GhJ23hctatQmyqd27xS9nU7iNaM=";
         };
       };
     })
-    (final: prev: {
-      dolphin-emu-beta = prev.dolphin-emu-beta.overrideAttrs (finalAttrs: prevAttrs: {
-        version = "5.0-17995";
-        src = prev.fetchFromGitHub {
-          owner = "dolphin-emu";
-          repo = "dolphin";
-          rev = "8bad821019721b9b72701b495da95656ace5fea5";
-          sha256 = "sha256-uxHzn+tXRBr11OPpZ4ELBw7DTJH4mnqUBOeyPlXNAh8=";
-          fetchSubmodules = true;
+    #(final: prev: {
+    #  dolphin-emu-beta = prev.dolphin-emu-beta.overrideAttrs (finalAttrs: prevAttrs: {
+    #    version = "5.0-17995";
+    #    src = prev.fetchFromGitHub {
+    #      owner = "dolphin-emu";
+    #      repo = "dolphin";
+    #      rev = "8bad821019721b9b72701b495da95656ace5fea5";
+    #      sha256 = "sha256-uxHzn+tXRBr11OPpZ4ELBw7DTJH4mnqUBOeyPlXNAh8=";
+    #      fetchSubmodules = true;
 
-        };
-      cmakeFlags = [
-        "-DDISTRIBUTOR=NixOS"
-        "-DUSE_SHARED_ENET=ON"
-        "-DDOLPHIN_WC_REVISION=${finalAttrs.src.rev}"
-        "-DDOLPHIN_WC_DESCRIBE=${finalAttrs.version}"
-        "-DDOLPHIN_WC_BRANCH=master"];
-      });
-    })
+    #    };
+    #  cmakeFlags = [
+    #    "-DDISTRIBUTOR=NixOS"
+    #    "-DUSE_SHARED_ENET=ON"
+    #    "-DDOLPHIN_WC_REVISION=${finalAttrs.src.rev}"
+    #    "-DDOLPHIN_WC_DESCRIBE=${finalAttrs.version}"
+    #    "-DDOLPHIN_WC_BRANCH=master"];
+    #  });
+    #})
   ];
 }
 
