@@ -56,6 +56,18 @@
     useXkbConfig = true;
   };
 
+  services.dnsmasq = {
+    enable = false;
+    #settings = {
+    #  listen-address="127.0.0.1";
+    #  address = [
+    #    "/.svc.jumziey.cmtest.se/63.32.27.50"
+    #    "/.svc.jumziey.cmtest.se/34.255.143.171"
+    #    "/.svc.jumziey.cmtest.se/54.155.93.150"
+    #  ];
+    #};
+  };
+
   # This is required so that pod can reach the API server (running on port 6443 by default)
   networking.firewall.allowedTCPPorts = [ 6443 10250 ];
   services.k3s = {
