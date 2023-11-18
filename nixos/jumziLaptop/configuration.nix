@@ -411,15 +411,15 @@
   };
 
   nixpkgs.overlays = [
-    (final: prev: {
-      discord = prev.discord.override rec {
-        version = "0.0.32";
-        src = prev.fetchurl {
-          url = "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz";
-          sha256 = "sha256-KDKUssPRrs/D10s5GhJ23hctatQmyqd27xS9nU7iNaM=";
-        };
-      };
-    })
+    #(final: prev: {
+    #  discord = prev.discord.override rec {
+    #    version = "0.0.32";
+    #    src = prev.fetchurl {
+    #      url = "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz";
+    #      sha256 = "sha256-KDKUssPRrs/D10s5GhJ23hctatQmyqd27xS9nU7iNaM=";
+    #    };
+    #  };
+    #})
     #(final: prev: {
     #  dolphin-emu-beta = prev.dolphin-emu-beta.overrideAttrs (finalAttrs: prevAttrs: {
     #    version = "5.0-17995";
