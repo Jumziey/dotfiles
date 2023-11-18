@@ -24,20 +24,21 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "jumziLaptop"; # Define your hostname.
-  networking.networkmanager.enable = true;
-  networking.networkmanager.dhcp = "dhcpcd";
-  networking.useDHCP = false;
-  networking.nameservers = [ "1.1.1.1" ];
-
-  networking.extraHosts =
-    ''
-      192.168.1.1 router
-      192.168.0.1 jumziServer
-      192.168.0.201 node-1
-      192.168.0.202 node-2
-      192.168.0.203 node-3
-    '';
+  networking = {
+    hostName = "jumziLaptop";
+    networkmanager.enable = true;
+    extraHosts =
+      ''
+        127.0.0.1 test-server-1
+        127.0.0.1 test-server-2
+        192.168.1.1 router
+        192.168.0.1 jumziServer
+        192.168.0.201 node-1
+        192.168.0.202 node-2
+        192.168.0.203 node-3
+      '';
+      firewall.allowedTCPPorts = [ 6443 10250 ];
+  };
 
   time.timeZone = "Europe/Stockholm";
 
@@ -56,20 +57,20 @@
     useXkbConfig = true;
   };
 
-  services.dnsmasq = {
-    enable = false;
-    #settings = {
-    #  listen-address="127.0.0.1";
-    #  address = [
-    #    "/.svc.jumziey.cmtest.se/63.32.27.50"
-    #    "/.svc.jumziey.cmtest.se/34.255.143.171"
-    #    "/.svc.jumziey.cmtest.se/54.155.93.150"
-    #  ];
-    #};
-  };
+  #services.dnsmasq = {
+  #  enable = false;
+  #  #settings = {
+  #  #  listen-address="127.0.0.1";
+  #  #  address = [
+  #  #    "/.svc.accurate.video/52.30.187.86"
+  #  #    "/.svc.accurate.video/63.32.148.198"
+  #  #    "/.svc.accurate.video/34.248.82.115"
+  #  #  ];
+  #  #};
+  #};
 
   # This is required so that pod can reach the API server (running on port 6443 by default)
-  networking.firewall.allowedTCPPorts = [ 6443 10250 ];
+  
   services.k3s = {
     enable = false;
     role = "server";
@@ -133,11 +134,11 @@
   users.extraGroups.vboxusers.members = [ "jumzi" ];
 
   environment.systemPackages = with pkgs // jpkgs; [
+    dig
     bitwarden-bws
     lightdm
     git
     nix-index
-    dhcpcd
     bash
     parallel
     alacritty
