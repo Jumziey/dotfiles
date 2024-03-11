@@ -37,7 +37,15 @@
         192.168.0.202 node-2
         192.168.0.203 node-3
       '';
-      firewall.allowedTCPPorts = [ 6443 10250 ];
+      firewall = {
+        enable = true;
+        # 53 used for runing network dns (testing)
+        # 67 used for service dhcp requests
+        # 69 TFTP
+        # 4011 dhcp proxy port (BINL)
+        allowedTCPPorts = [ 53 67 6443 10250 5000];
+        allowedUDPPorts = [ 53 67 69 4011 ];
+      };
   };
 
   time.timeZone = "Europe/Stockholm";
@@ -57,22 +65,36 @@
     useXkbConfig = true;
   };
 
-  #services.dnsmasq = {
-  #  enable = false;
-  #  #settings = {
-  #  #  listen-address="127.0.0.1";
-  #  #  address = [
-  #  #    "/.svc.accurate.video/52.30.187.86"
-  #  #    "/.svc.accurate.video/63.32.148.198"
-  #  #    "/.svc.accurate.video/34.248.82.115"
-  #  #  ];
-  #  #};
-  #};
+  services.octoprint = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  services.dnsmasq = {
+    enable = false;
+    settings = {
+      listen-address="127.0.0.1";
+      # Green 
+      address = [
+        "/.svc.accurate.video/3.11.74.88"
+        "/.svc.accurate.video/3.9.11.195"
+        "/.svc.accurate.video/13.43.211.123"
+      ];
+
+      # Blue
+      #address = [
+      #  "/.svc.accurate.video/99.80.113.49"
+      #  "/.svc.accurate.video/34.252.204.87"
+      #  "/.svc.accurate.video/34.253.27.68"
+      #];
+    };
+  };
+# 3.11.74.88
 
   # This is required so that pod can reach the API server (running on port 6443 by default)
   
   services.k3s = {
-    enable = false;
+    enable = true;
     role = "server";
     extraFlags = "--kubelet-arg=eviction-hard=nodefs.available<2Gi";
   };
@@ -150,8 +172,6 @@
     curl
     nodejs
     xclip
-    docker
-    docker-compose
     spaceship-prompt
     file
     shellcheck
@@ -167,7 +187,6 @@
     gnupg
     pinentry
     pinentry-curses
-    docker-credential-helpers
     kind
     kubectl
     mpv
@@ -212,6 +231,11 @@
     terraform
     zathura
     git-lfs
+    printrun
+    prusa-slicer
+    nodejs
+    opentofu
+    docker-credential-helpers
   ];
   environment.pathsToLink = [
     "/share/nix-direnv"
@@ -259,7 +283,9 @@
 
   virtualisation =
     {
-      docker.enable = true;
+      docker = {
+        enable = true;
+      };
       libvirtd.enable = true;
       virtualbox.host.enable = true;
     };
@@ -278,6 +304,7 @@
     MOZ_USE_XINPUT2 = "1";
     PATH = [
       "\${HOME}/bin"
+      "\${HOME}/.npm-global/bin"
       "\${HOME}/.local/bin"
       "\${HOME}/go/bin"
     ];
@@ -396,9 +423,9 @@
       listDesktopFiles = ''find / -iname "*desktop" -type f -not -path "/nix/store*" 2> /dev/null'';
       getfont = "fc-list | cut -d ':' -f  2 | sort | fzf | xargs | tee >(xclip -selection primary&) >(xclip -selection clipboard&)";
 
-      printrun = "docker run --device /dev/ttyACM0 -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD:/root twhtanghk/docker.printrun";
+      #printrun = "docker run --device /dev/ttyACM0 -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD:/root twhtanghk/docker.printrun";
 
-      printrunACM1 = "docker run - -device /dev/ttyACM1 - e DISPLAY - v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD:/root twhtanghk/docker.printrun";
+      #printrunACM1 = "docker run - -device /dev/ttyACM1 - e DISPLAY - v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD:/root twhtanghk/docker.printrun";
 
       xcl = "tr -d [:space:] | xclip -selection clipboard";
       cppwd = ''echo -n "cd $(pwd | tr -d [:space:])" | xclip -selection clipboard'';
