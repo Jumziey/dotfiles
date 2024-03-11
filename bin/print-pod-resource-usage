@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+NAMESPACE="${1}"
+POD_NAME="${2}"
+INTERVAL="${3:-5}"
+
+while true; do kubectl top -n "${NAMESPACE}" pod "${POD_NAME}" --containers=true; sleep "${INTERVAL}"; done
