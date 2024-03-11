@@ -1,15 +1,15 @@
 { config, pkgs, lib, ... }:
 let
-  angular-language-server = pkgs.mkYarnPackage {
-    name = "angular-language-server";
-    pname = "@angular/language-server";
-    src = pkgs.fetchFromGitHub {
-      owner = "jumziey";
-      repo = "vscode-ng-language-service";
-      rev = "6d66f973ba1ffc27fad574111d19ab58ecddd476";
-      sha256 = "1swip9h9hl3xqjs5ddrxkbdv4q5ssq6k2ljp9il7mvffif4q6hd0";
-    };
-  };
+  #angular-language-server = pkgs.mkYarnPackage {
+  #  pname = "@angular/language-server";
+  #  version = "17.1.1";
+  #  src = pkgs.fetchFromGitHub {
+  #    owner = "jumziey";
+  #    repo = "vscode-ng-language-service";
+  #    rev = "49ebaca1d8244c355b1a906f12463305375bbf4e";
+  #    sha256 = "0l6rgjr1gg50xvwvdwx1afqymxaa5l43ka4vhlw53hy2fawz16sw";
+  #  };
+  #};
 
   custom-hop-vim = pkgs.vimUtils.buildVimPlugin {
     name = "hop-vim";
@@ -144,7 +144,8 @@ in
       golint
       godef
       gotools
-      angular-language-server
+      jsonnet-language-server
+      #angular-language-server
       rnix-lsp
       neovim
       gcc
@@ -261,6 +262,8 @@ in
               nvim-treesitter-textobjects
               (nvim-treesitter.withPlugins (
                 plugins: with plugins; [
+                  angular
+                  jsonnet
                   bash
                   c
                   c_sharp

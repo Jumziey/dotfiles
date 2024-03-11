@@ -77,3 +77,16 @@ require'lspconfig'.rnix.setup{
 require'lspconfig'.helm_ls.setup{
   on_attach = on_attach,
 }
+
+require'lspconfig'.jsonnet_ls.setup{
+  on_attach = on_attach,
+}
+
+local cmd = {"ngserver", "--stdio", "--tsProbeLocations", "home/jumzi/.npm-global/lib/node_modules/typescript/lib" , "--ngProbeLocations", "home/jumzi/.npm-global/lib/node_modules/@angular/language-service/lib"}
+
+require'lspconfig'.angularls.setup{
+  cmd = cmd,
+  on_new_config = function(new_config,new_root_dir)
+    new_config.cmd = cmd
+  end,
+}
