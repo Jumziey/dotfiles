@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+SECRET_NAME=${1}
+bws list secrets | jq -c ".[] | select(.key==\"${SECRET_NAME}\") | .key ,.id"
